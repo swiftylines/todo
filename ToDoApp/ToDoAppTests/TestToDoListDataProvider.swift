@@ -66,3 +66,47 @@ extension TestToDoListDataProvider {
     }
     
 }
+
+// MARK: - Remove ToDo test
+extension TestToDoListDataProvider {
+    
+    func test_removeToDo_success() {
+        
+        // Add new item
+        let addedItem = try! self.sut.addNewToDo(with: "Write some notes.")
+        
+        // Remove
+        let _validId = addedItem.id
+        var _removedToDoItem: ToDoItem?
+        var _removeError: Error?
+        
+        do {
+            _removedToDoItem = try self.sut.removeToDo(with: _validId)
+        } catch {
+            _removeError = error
+        }
+        
+        // Test
+        XCTAssertNil(_removeError)
+        XCTAssertNotNil(_removedToDoItem)
+        XCTAssertTrue(_removedToDoItem?.id == _validId)
+    }
+    
+    func test_removeToDo_failed() {
+        // Remove
+        let _inValidId = UUID() // random id
+        var _removedToDoItem: ToDoItem?
+        var _removeError: Error?
+        
+        do {
+            _removedToDoItem = try self.sut.removeToDo(with: _inValidId)
+        } catch {
+            _removeError = error
+        }
+        
+        // Test
+        XCTAssertNil(_removedToDoItem)
+        XCTAssertTrue((_removeError as? ToDoError) == .doesNotExist)
+    }
+    
+}
