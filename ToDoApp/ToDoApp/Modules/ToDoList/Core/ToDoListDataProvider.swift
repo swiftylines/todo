@@ -11,15 +11,15 @@ protocol ToDoListDataProvider {
     
     var todos: [ToDoItem] { get set }
     
-    mutating func addNewToDo(with description: String) throws
+    mutating func addNewToDo(with description: String) throws -> ToDoItem
     
-    mutating func removeToDo(with id: UUID) throws
+    mutating func removeToDo(with id: UUID) throws -> ToDoItem
     
 }
 
 extension ToDoListDataProvider {
     
-    mutating func addNewToDo(with description: String) throws {
+    mutating func addNewToDo(with description: String) throws -> ToDoItem {
         // Check for description
         if description.isEmpty {
             throw ToDoError.emptyDescription
@@ -30,20 +30,25 @@ extension ToDoListDataProvider {
                                 createdAt: Date(),
                                 description: description)
         
+        // Add to empty list
         if self.todos.isEmpty {
             self.todos.append(todoItem)
-            return
+            return todoItem
         }
         
+        // Add to existing
         // New todos should be added at the top
         self.todos.insert(todoItem, at: 0)
+        return todoItem
     }
     
-    mutating func removeToDo(with id: UUID) throws {
+    mutating func removeToDo(with id: UUID) throws -> ToDoItem {
         // Check for index
         if let todoItemIndex = self.todos.firstIndex(where: { $0.id == id }) {
+            let todoItem = self.todos[todoItemIndex]
             // Remove
             self.todos.remove(at: todoItemIndex)
+            return todoItem
         } else {
             // Error
             throw ToDoError.doesNotExist
