@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:CoreUIKit/CoreUIKit.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:ToDoApp/ToDoApp.xcodeproj">
    </FileRef>
 </Workspace>
