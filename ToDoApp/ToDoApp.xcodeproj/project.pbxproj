@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		139E08BF26E13AAE00A72A24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139E08BE26E13AAE00A72A24 /* AppDelegate.swift */; };
 		139E08CE26E13AAE00A72A24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 139E08CC26E13AAE00A72A24 /* LaunchScreen.storyboard */; };
-		139E08D926E13AAE00A72A24 /* ToDoAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139E08D826E13AAE00A72A24 /* ToDoAppTests.swift */; };
 		139E08E426E13AAE00A72A24 /* ToDoAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139E08E326E13AAE00A72A24 /* ToDoAppUITests.swift */; };
 		139E091926E13BD400A72A24 /* CoreUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 139E091826E13BD400A72A24 /* CoreUIKit.framework */; };
 		139E091A26E13BD400A72A24 /* CoreUIKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 139E091826E13BD400A72A24 /* CoreUIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -20,6 +19,9 @@
 		139E093426E1439000A72A24 /* ToDoListDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139E093326E1439000A72A24 /* ToDoListDataProvider.swift */; };
 		139E093626E143B400A72A24 /* ToDoListViewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139E093526E143B400A72A24 /* ToDoListViewProvider.swift */; };
 		139E093A26E1441C00A72A24 /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139E093926E1441C00A72A24 /* ToDoItem.swift */; };
+		139E093D26E146D000A72A24 /* MockToDoListDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139E093C26E146D000A72A24 /* MockToDoListDataProvider.swift */; };
+		139E093F26E1479900A72A24 /* TestToDoListDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139E093E26E1479900A72A24 /* TestToDoListDataProvider.swift */; };
+		139E094326E1498100A72A24 /* ToDoError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139E094226E1498100A72A24 /* ToDoError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,7 +61,6 @@
 		139E08CD26E13AAE00A72A24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		139E08CF26E13AAE00A72A24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		139E08D426E13AAE00A72A24 /* ToDoAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		139E08D826E13AAE00A72A24 /* ToDoAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoAppTests.swift; sourceTree = "<group>"; };
 		139E08DA26E13AAE00A72A24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		139E08DF26E13AAE00A72A24 /* ToDoAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		139E08E326E13AAE00A72A24 /* ToDoAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoAppUITests.swift; sourceTree = "<group>"; };
@@ -72,6 +73,9 @@
 		139E093326E1439000A72A24 /* ToDoListDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListDataProvider.swift; sourceTree = "<group>"; };
 		139E093526E143B400A72A24 /* ToDoListViewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListViewProvider.swift; sourceTree = "<group>"; };
 		139E093926E1441C00A72A24 /* ToDoItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
+		139E093C26E146D000A72A24 /* MockToDoListDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockToDoListDataProvider.swift; sourceTree = "<group>"; };
+		139E093E26E1479900A72A24 /* TestToDoListDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestToDoListDataProvider.swift; sourceTree = "<group>"; };
+		139E094226E1498100A72A24 /* ToDoError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,8 +138,9 @@
 		139E08D726E13AAE00A72A24 /* ToDoAppTests */ = {
 			isa = PBXGroup;
 			children = (
-				139E08D826E13AAE00A72A24 /* ToDoAppTests.swift */,
+				139E093B26E146BC00A72A24 /* Mocks */,
 				139E08DA26E13AAE00A72A24 /* Info.plist */,
+				139E093E26E1479900A72A24 /* TestToDoListDataProvider.swift */,
 			);
 			path = ToDoAppTests;
 			sourceTree = "<group>";
@@ -216,8 +221,17 @@
 			isa = PBXGroup;
 			children = (
 				139E093926E1441C00A72A24 /* ToDoItem.swift */,
+				139E094226E1498100A72A24 /* ToDoError.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		139E093B26E146BC00A72A24 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				139E093C26E146D000A72A24 /* MockToDoListDataProvider.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -355,6 +369,7 @@
 				139E093426E1439000A72A24 /* ToDoListDataProvider.swift in Sources */,
 				139E092426E13CAD00A72A24 /* AddToDoView.swift in Sources */,
 				139E092626E13CBC00A72A24 /* AddToDoViewModel.swift in Sources */,
+				139E094326E1498100A72A24 /* ToDoError.swift in Sources */,
 				139E093A26E1441C00A72A24 /* ToDoItem.swift in Sources */,
 				139E08BF26E13AAE00A72A24 /* AppDelegate.swift in Sources */,
 			);
@@ -364,7 +379,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				139E08D926E13AAE00A72A24 /* ToDoAppTests.swift in Sources */,
+				139E093F26E1479900A72A24 /* TestToDoListDataProvider.swift in Sources */,
+				139E093D26E146D000A72A24 /* MockToDoListDataProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
