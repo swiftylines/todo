@@ -7,7 +7,7 @@
 
 public protocol BaseView {
     
-    var viewModel: BaseViewModel { get }
+    var viewModel: BaseViewModel? { get }
     
     func setupViews()
     func setupData()

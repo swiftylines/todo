@@ -13,6 +13,8 @@
 		139E092826E13CE600A72A24 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139E092726E13CE600A72A24 /* BaseView.swift */; };
 		139E092A26E13CF200A72A24 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139E092926E13CF200A72A24 /* BaseViewModel.swift */; };
 		139E092C26E13ECE00A72A24 /* BaseInitializableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139E092B26E13ECE00A72A24 /* BaseInitializableView.swift */; };
+		139E092E26E1404500A72A24 /* BaseTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139E092D26E1404500A72A24 /* BaseTableView.swift */; };
+		139E093026E1422F00A72A24 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139E092F26E1422F00A72A24 /* BaseTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +37,8 @@
 		139E092726E13CE600A72A24 /* BaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		139E092926E13CF200A72A24 /* BaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		139E092B26E13ECE00A72A24 /* BaseInitializableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInitializableView.swift; sourceTree = "<group>"; };
+		139E092D26E1404500A72A24 /* BaseTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableView.swift; sourceTree = "<group>"; };
+		139E092F26E1422F00A72A24 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,9 +83,8 @@
 			children = (
 				139E090026E13BB900A72A24 /* CoreUIKit.h */,
 				139E090126E13BB900A72A24 /* Info.plist */,
-				139E092726E13CE600A72A24 /* BaseView.swift */,
-				139E092B26E13ECE00A72A24 /* BaseInitializableView.swift */,
-				139E092926E13CF200A72A24 /* BaseViewModel.swift */,
+				139E093126E142B600A72A24 /* BaseView */,
+				139E093226E142CA00A72A24 /* BaseTableView */,
 			);
 			path = CoreUIKit;
 			sourceTree = "<group>";
@@ -93,6 +96,25 @@
 				139E090D26E13BB900A72A24 /* Info.plist */,
 			);
 			path = CoreUIKitTests;
+			sourceTree = "<group>";
+		};
+		139E093126E142B600A72A24 /* BaseView */ = {
+			isa = PBXGroup;
+			children = (
+				139E092726E13CE600A72A24 /* BaseView.swift */,
+				139E092B26E13ECE00A72A24 /* BaseInitializableView.swift */,
+				139E092926E13CF200A72A24 /* BaseViewModel.swift */,
+			);
+			path = BaseView;
+			sourceTree = "<group>";
+		};
+		139E093226E142CA00A72A24 /* BaseTableView */ = {
+			isa = PBXGroup;
+			children = (
+				139E092D26E1404500A72A24 /* BaseTableView.swift */,
+				139E092F26E1422F00A72A24 /* BaseTableViewCell.swift */,
+			);
+			path = BaseTableView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,8 +226,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				139E092E26E1404500A72A24 /* BaseTableView.swift in Sources */,
 				139E092826E13CE600A72A24 /* BaseView.swift in Sources */,
 				139E092C26E13ECE00A72A24 /* BaseInitializableView.swift in Sources */,
+				139E093026E1422F00A72A24 /* BaseTableViewCell.swift in Sources */,
 				139E092A26E13CF200A72A24 /* BaseViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

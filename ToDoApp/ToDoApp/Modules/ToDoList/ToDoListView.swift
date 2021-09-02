@@ -9,7 +9,7 @@ import UIKit
 import CoreUIKit
 
 class ToDoListView: UIViewController, BaseInitializableView {
-    let viewModel: BaseViewModel
+    let viewModel: BaseViewModel?
     
     required init(viewModel: BaseViewModel) {
         self.viewModel = viewModel
