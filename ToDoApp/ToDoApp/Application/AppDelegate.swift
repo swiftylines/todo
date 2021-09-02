@@ -15,7 +15,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        self.setupRootViewController()
         return true
     }
 
+}
+
+private extension AppDelegate {
+    
+    func setupRootViewController() {
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.rootViewController = ToDoListView(viewModel: ToDoListViewModel())
+        self.window?.makeKeyAndVisible()
+    }
+    
 }
