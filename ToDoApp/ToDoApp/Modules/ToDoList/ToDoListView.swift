@@ -8,9 +8,14 @@
 import UIKit
 import CoreUIKit
 
-class ToDoListView: UIViewController, BaseInitializableView {
+class ToDoListView: UIViewController, BaseInitializableView, ToDoListViewProvider {
+    
+    // MARK: - Properties
+    let todoListView = BaseTableView()
+    let addToDoButtonView = UIButton()
     let viewModel: BaseViewModel?
     
+    // MARK: - Init
     required init(viewModel: BaseViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -20,16 +25,31 @@ class ToDoListView: UIViewController, BaseInitializableView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - VC Lifecycles
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .red
+        
+        self.setupViews()
+        self.setupData()
     }
     
+    // MARK: - Setups
     func setupViews() {
-        
+        self.setupTodoListView()
+        self.setupAddTodoButtonView()
     }
     
     func setupData() {
+        
+    }
+    
+    func setupTodoListView() {
+        self.todoListView
+            .add(to: self.view)
+            .allAnchorsSame(on: self.view)
+    }
+    
+    func setupAddTodoButtonView() {
         
     }
     
