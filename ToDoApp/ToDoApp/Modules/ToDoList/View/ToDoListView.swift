@@ -13,7 +13,7 @@ class ToDoListView: UIViewController, BaseInitializableView, ToDoListViewProvide
     // MARK: - Properties
     let todoTableView = BaseTableView()
     let addToDoButtonView = UIButton()
-    let viewModel: ToDoListViewModel?
+    private(set) var viewModel: ToDoListViewModel?
     
     // MARK: - Init
     required init(viewModel: ToDoListViewModel) {
@@ -49,7 +49,7 @@ class ToDoListView: UIViewController, BaseInitializableView, ToDoListViewProvide
             .allAnchorsSame(on: self.view)
         
         self.todoTableView
-            .register(UITableViewCell.self)
+            .register(ToDoItemCell.self)
         
         self.todoTableView.dataSource = self
         self.todoTableView.delegate = self

@@ -7,15 +7,19 @@
 
 import UIKit
 
-public class BaseTableViewCell<ViewModel: BaseViewModel>: UITableViewCell, BaseView {
+open class BaseTableViewCell<ViewModel: BaseViewModel>: UITableViewCell, BaseView {
     
-    public var viewModel: ViewModel?
+    public var viewModel: ViewModel? {
+        didSet {
+            self.setupData()
+        }
+    }
     
-    public func setupViews() {
+    open func setupViews() {
         self.selectionStyle = .none
     }
     
-    public func setupData() {
+    open func setupData() {
         
     }
     
