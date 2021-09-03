@@ -11,12 +11,12 @@ import CoreUIKit
 class ToDoListView: UIViewController, BaseInitializableView, ToDoListViewProvider {
     
     // MARK: - Properties
-    let todoListView = BaseTableView()
+    let todoTableView = BaseTableView()
     let addToDoButtonView = UIButton()
-    let viewModel: BaseViewModel?
+    let viewModel: ToDoListViewModel?
     
     // MARK: - Init
-    required init(viewModel: BaseViewModel) {
+    required init(viewModel: ToDoListViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -35,7 +35,7 @@ class ToDoListView: UIViewController, BaseInitializableView, ToDoListViewProvide
     
     // MARK: - Setups
     func setupViews() {
-        self.setupTodoListView()
+        self.setupTodoTableView()
         self.setupAddTodoButtonView()
     }
     
@@ -43,8 +43,8 @@ class ToDoListView: UIViewController, BaseInitializableView, ToDoListViewProvide
         
     }
     
-    func setupTodoListView() {
-        self.todoListView
+    func setupTodoTableView() {
+        self.todoTableView
             .add(to: self.view)
             .allAnchorsSame(on: self.view)
     }

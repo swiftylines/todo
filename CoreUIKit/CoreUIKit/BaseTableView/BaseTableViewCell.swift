@@ -7,9 +7,9 @@
 
 import UIKit
 
-public class BaseTableViewCell: UITableViewCell, BaseView {
+public class BaseTableViewCell<ViewModel: BaseViewModel>: UITableViewCell, BaseView {
     
-    public var viewModel: BaseViewModel?
+    public var viewModel: ViewModel?
     
     public func setupViews() {
         self.selectionStyle = .none

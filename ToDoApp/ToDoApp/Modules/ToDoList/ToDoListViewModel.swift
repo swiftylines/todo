@@ -7,7 +7,9 @@
 
 import CoreUIKit
 
-struct ToDoListViewModel: BaseViewModel {
+struct ToDoListViewModel: BaseViewModel, ToDoListDataProvider {
+    
+    var todos = [ToDoItem]()
     
     func initializeData() {
         

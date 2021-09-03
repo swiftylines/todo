@@ -10,10 +10,10 @@ import CoreUIKit
 
 protocol ToDoListViewProvider {
     
-    var todoListView: BaseTableView { get }
+    var todoTableView: BaseTableView { get }
     var addToDoButtonView: UIButton { get }
     
-    func setupTodoListView()
+    func setupTodoTableView()
     func setupAddTodoButtonView()
     
 }

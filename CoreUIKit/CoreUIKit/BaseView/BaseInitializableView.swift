@@ -7,6 +7,6 @@
 
 public protocol BaseInitializableView: BaseView {
     
-    init(viewModel: BaseViewModel)
+    init(viewModel: ViewModel)
     
 }
