@@ -16,6 +16,10 @@ extension ToDoListView: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = self.todoTableView.dequeue(UITableViewCell.self) {
+            cell.textLabel?.text = self.viewModel?.todos[indexPath.row].description
+        }
+        
         return UITableViewCell()
     }
     

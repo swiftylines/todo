@@ -47,6 +47,12 @@ class ToDoListView: UIViewController, BaseInitializableView, ToDoListViewProvide
         self.todoTableView
             .add(to: self.view)
             .allAnchorsSame(on: self.view)
+        
+        self.todoTableView
+            .register(UITableViewCell.self)
+        
+        self.todoTableView.dataSource = self
+        self.todoTableView.delegate = self
     }
     
     func setupAddTodoButtonView() {
