@@ -11,8 +11,4 @@ struct ToDoItemCellViewModel: BaseViewModel {
     
     let todoDescription: String
     
-    func initializeData() {
-        
-    }
-    
 }

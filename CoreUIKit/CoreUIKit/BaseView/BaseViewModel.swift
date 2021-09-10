@@ -10,3 +10,9 @@ public protocol BaseViewModel {
     func initializeData()
     
 }
+
+public extension BaseViewModel {
+    
+    func initializeData() { }
+    
+}

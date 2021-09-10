@@ -22,6 +22,7 @@ public class BaseTableView: UITableView {
     
 }
 
+// MARK: - Register and Dequeue cells
 public extension BaseTableView {
     
     func register<CellType: UITableViewCell>(_ cellType: CellType.Type) {

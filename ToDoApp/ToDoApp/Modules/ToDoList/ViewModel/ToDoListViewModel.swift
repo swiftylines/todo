@@ -7,9 +7,15 @@
 
 import CoreUIKit
 
-struct ToDoListViewModel: BaseViewModel, ToDoListDataProvider {
+class ToDoListViewModel: BaseViewModel, ToDoListDataProvider {
     
-    var todos = [ToDoItem]()
+    weak var delegate: ToDoListViewModelDelegate?
+    
+    var todos = [ToDoItem]() {
+        didSet {
+            self.delegate?.didUpdateToDos()
+        }
+    }
     
     func initializeData() {
         
