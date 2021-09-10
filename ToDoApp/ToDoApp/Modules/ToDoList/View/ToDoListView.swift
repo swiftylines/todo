@@ -12,7 +12,7 @@ class ToDoListView: UIViewController, BaseInitializableView, ToDoListViewProvide
     
     // MARK: - Properties
     let todoTableView = BaseTableView()
-    let addToDoButtonView = UIButton()
+    let addToDoButtonView = UIBarButtonItem()
     private(set) var viewModel: ToDoListViewModel?
     
     // MARK: - Init
@@ -56,7 +56,17 @@ class ToDoListView: UIViewController, BaseInitializableView, ToDoListViewProvide
     }
     
     func setupAddTodoButtonView() {
+        self.addToDoButtonView.title = "Add"
+        self.addToDoButtonView.target = self
+        self.addToDoButtonView.action = #selector(self.didTapAddToDoButtonView)
+        self.addToDoButtonView.style = .plain
         
+        self.navigationItem.rightBarButtonItem = self.addToDoButtonView
+    }
+    
+    @objc private func didTapAddToDoButtonView() {
+        self.navigationController?
+            .pushViewController(AddToDoView(viewModel: AddToDoViewModel()), animated: true)
     }
     
 }

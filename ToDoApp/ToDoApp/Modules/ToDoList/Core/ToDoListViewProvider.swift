@@ -11,7 +11,7 @@ import CoreUIKit
 protocol ToDoListViewProvider {
     
     var todoTableView: BaseTableView { get }
-    var addToDoButtonView: UIButton { get }
+    var addToDoButtonView: UIBarButtonItem { get }
     
     func setupTodoTableView()
     func setupAddTodoButtonView()

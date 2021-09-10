@@ -45,41 +45,41 @@ public extension UIView {
     }
     
     @discardableResult
-    func leading(on parentView: UIView,
+    func leading(with anchor: NSLayoutXAxisAnchor,
                  margin: CGFloat = .zero) -> Self {
         self.leadingAnchor
-            .constraint(equalTo: parentView.leadingAnchor,
+            .constraint(equalTo: anchor,
                         constant: margin).isActive = true
         
         return self
     }
     
     @discardableResult
-    func trailing(on parentView: UIView,
+    func trailing(with anchor: NSLayoutXAxisAnchor,
                   margin: CGFloat = .zero) -> Self {
         self.trailingAnchor
-            .constraint(equalTo: parentView.trailingAnchor,
-                        constant: margin).isActive = true
+            .constraint(equalTo: anchor,
+                        constant: -margin).isActive = true
         
         return self
     }
     
     @discardableResult
-    func top(on parentView: UIView,
+    func top(with anchor: NSLayoutYAxisAnchor,
              margin: CGFloat = .zero) -> Self {
         self.topAnchor
-            .constraint(equalTo: parentView.topAnchor,
+            .constraint(equalTo: anchor,
                         constant: margin).isActive = true
         
         return self
     }
     
     @discardableResult
-    func bottom(on parentView: UIView,
+    func bottom(with anchor: NSLayoutYAxisAnchor,
                 margin: CGFloat = .zero) -> Self {
         self.bottomAnchor
-            .constraint(equalTo: parentView.bottomAnchor,
-                        constant: margin).isActive = true
+            .constraint(equalTo: anchor,
+                        constant: -margin).isActive = true
         
         return self
     }
@@ -104,20 +104,20 @@ public extension UIView {
     }
     
     @discardableResult
-    func centerX(on parentView: UIView,
+    func centerX(with anchor: NSLayoutXAxisAnchor,
                  margin: CGFloat = .zero) -> Self {
         self.centerXAnchor
-            .constraint(equalTo: parentView.centerXAnchor,
+            .constraint(equalTo: anchor,
                         constant: margin).isActive = true
         
         return self
     }
     
     @discardableResult
-    func centerY(on parentView: UIView,
+    func centerY(with anchor: NSLayoutYAxisAnchor,
                  margin: CGFloat = .zero) -> Self {
         self.centerYAnchor
-            .constraint(equalTo: parentView.centerYAnchor,
+            .constraint(equalTo: anchor,
                         constant: margin).isActive = true
         
         return self
@@ -126,8 +126,8 @@ public extension UIView {
     @discardableResult
     func center(on parentView: UIView,
                 with size: CGSize) -> Self {
-        self.centerX(on: parentView)
-            .centerY(on: parentView)
+        self.centerX(with: parentView.centerXAnchor)
+            .centerY(with: parentView.centerYAnchor)
             .with(width: size.width, height: size.height)
         
         return self
