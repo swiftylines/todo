@@ -12,6 +12,7 @@ class AddToDoView: UIViewController, BaseInitializableView {
     
     // MARK: - Properties
     private lazy var textView = UITextView()
+    let saveToDoButtonView = UIBarButtonItem()
     private(set) var viewModel: AddToDoViewModel?
     
     
@@ -34,6 +35,15 @@ class AddToDoView: UIViewController, BaseInitializableView {
     
     // MARK: - setups
     func setupViews() {
+        self.setupTextView()
+        self.checkAndSetupSaveToDoButtonVIew()
+    }
+    
+    func setupData() {
+        
+    }
+    
+    func setupTextView() {
         self.textView
             .add(to: self.view)
             .allAnchorsSame(on: self.view)
@@ -41,8 +51,29 @@ class AddToDoView: UIViewController, BaseInitializableView {
         self.textView.delegate = self
     }
     
-    func setupData() {
+    func checkAndSetupSaveToDoButtonVIew() {
+        if textView.text.isEmpty {
+            self.navigationItem.rightBarButtonItem = nil
+            return
+        }
         
+        if self.navigationItem.rightBarButtonItem == nil {
+            self.setupSaveTodoButtonView()
+        }
+    }
+    
+    func setupSaveTodoButtonView() {
+        self.saveToDoButtonView.title = "Save"
+        self.saveToDoButtonView.target = self
+        self.saveToDoButtonView.action = #selector(self.didTapSaveToDoButtonView)
+        self.saveToDoButtonView.style = .plain
+        
+        self.navigationItem.rightBarButtonItem = self.saveToDoButtonView
+    }
+    
+    @objc private func didTapSaveToDoButtonView() {
+        self.navigationController?
+            .pushViewController(AddToDoView(viewModel: AddToDoViewModel()), animated: true)
     }
     
 }
@@ -50,7 +81,7 @@ class AddToDoView: UIViewController, BaseInitializableView {
 extension AddToDoView: UITextViewDelegate {
     
     func textViewDidChange(_ textView: UITextView) {
-        print(textView.text.isEmpty ? "Yes" : "No")
+        self.checkAndSetupSaveToDoButtonVIew()
     }
     
 }
