@@ -12,6 +12,7 @@ protocol ToDoListViewProvider {
     
     var todoTableView: BaseTableView { get }
     var addToDoButtonView: UIBarButtonItem { get }
+    var viewModel: ToDoListViewModel? { get }
     
     func setupTodoTableView()
     func setupAddTodoButtonView()

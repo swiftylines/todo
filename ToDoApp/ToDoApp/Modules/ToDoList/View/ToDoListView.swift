@@ -64,7 +64,12 @@ class ToDoListView: UIViewController, BaseInitializableView, ToDoListViewProvide
         self.navigationItem.rightBarButtonItem = self.addToDoButtonView
     }
     
-    @objc private func didTapAddToDoButtonView() {
+}
+
+// MARK: - Action Handlers
+extension ToDoListView {
+    
+    @objc func didTapAddToDoButtonView() {
         let addToDoView = AddToDoView(viewModel: AddToDoViewModel())
         addToDoView.onNewToDoSave = { todoStr in
             self.todoTableView.reloadData()
