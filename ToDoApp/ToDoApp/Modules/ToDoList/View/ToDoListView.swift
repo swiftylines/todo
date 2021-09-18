@@ -65,8 +65,13 @@ class ToDoListView: UIViewController, BaseInitializableView, ToDoListViewProvide
     }
     
     @objc private func didTapAddToDoButtonView() {
+        let addToDoView = AddToDoView(viewModel: AddToDoViewModel())
+        addToDoView.onNewToDoSave = { todoStr in
+            self.todoTableView.reloadData()
+        }
+        
         self.navigationController?
-            .pushViewController(AddToDoView(viewModel: AddToDoViewModel()), animated: true)
+            .pushViewController(addToDoView, animated: true)
     }
     
 }

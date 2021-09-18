@@ -11,9 +11,15 @@ import CoreUIKit
 class AddToDoView: UIViewController, BaseInitializableView {
     
     // MARK: - Properties
-    private lazy var textView = UITextView()
-    let saveToDoButtonView = UIBarButtonItem()
     private(set) var viewModel: AddToDoViewModel?
+    private var todoHelper = ToDoListHelper.shared
+    
+    // MARK: - Views
+    private lazy var textView = UITextView()
+    private lazy var saveToDoButtonView = UIBarButtonItem()
+    
+    // MARK: - Callbacks
+    var onNewToDoSave: ((ToDoItem) -> Void)?
     
     
     // MARK: - Init
@@ -72,8 +78,16 @@ class AddToDoView: UIViewController, BaseInitializableView {
     }
     
     @objc private func didTapSaveToDoButtonView() {
-        self.navigationController?
-            .pushViewController(AddToDoView(viewModel: AddToDoViewModel()), animated: true)
+        do {
+            let addedToDoItem = try self.todoHelper.addNewToDo(with: self.textView.text)
+            
+            self.onNewToDoSave?(addedToDoItem)
+            self.navigationController?.popViewController(animated: true)
+        } catch {
+            print(error)
+            assertionFailure()
+        }
+        
     }
     
 }

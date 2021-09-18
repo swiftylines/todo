@@ -1,25 +1,26 @@
 //
-//  ToDoListDataProvider.swift
+//  ToDoListHelper.swift
 //  ToDoApp
 //
-//  Created by Manish on 02/09/21.
+//  Created by Manish on 18/09/21.
 //
 
 import Foundation
 
-protocol ToDoListDataProvider {
+class ToDoListHelper: ToDoListDataProvider {
     
-    var todos: [ToDoItem] { get set }
+    // MARK: - Shared
+    public static let shared = ToDoListHelper()
+    private init() { }
     
-    mutating func addNewToDo(with description: String) throws -> ToDoItem
-    
-    mutating func removeToDo(with id: UUID) throws -> ToDoItem
+    private(set) var todos = [ToDoItem]()
     
 }
 
-extension ToDoListDataProvider {
+extension ToDoListHelper {
     
-    mutating func addNewToDo(with description: String) throws -> ToDoItem {
+    @discardableResult
+    func addNewToDo(with description: String) throws -> ToDoItem {
         // Check for description
         if description.isEmpty {
             throw ToDoError.emptyDescription
@@ -42,7 +43,8 @@ extension ToDoListDataProvider {
         return todoItem
     }
     
-    mutating func removeToDo(with id: UUID) throws -> ToDoItem {
+    @discardableResult
+    func removeToDo(with id: UUID) throws -> ToDoItem {
         // Check for index
         if let todoItemIndex = self.todos.firstIndex(where: { $0.id == id }) {
             let todoItem = self.todos[todoItemIndex]

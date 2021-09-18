@@ -7,14 +7,12 @@
 
 import CoreUIKit
 
-class ToDoListViewModel: BaseViewModel, ToDoListDataProvider {
+class ToDoListViewModel: BaseViewModel {
     
-    weak var delegate: ToDoListViewModelDelegate?
+    let todoHelper = ToDoListHelper.shared
     
-    var todos = [ToDoItem]() {
-        didSet {
-            self.delegate?.didUpdateToDos()
-        }
+    var todos: [ToDoItem] {
+        return self.todoHelper.todos
     }
     
     func initializeData() {
