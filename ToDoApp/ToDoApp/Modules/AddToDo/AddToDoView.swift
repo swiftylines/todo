@@ -12,7 +12,6 @@ class AddToDoView: UIViewController, BaseInitializableView, AddToDoViewProvider 
     
     // MARK: - Properties
     private(set) var viewModel: AddToDoViewModel?
-    private var todoHelper = ToDoListHelper.shared
     
     // MARK: - Views
     private(set) var textView = UITextView()
@@ -91,15 +90,18 @@ extension AddToDoView: UITextViewDelegate {
 extension AddToDoView {
     
     @objc private func didTapSaveToDoButtonView() {
-        do {
-            let addedToDoItem = try self.todoHelper.addNewToDo(with: self.textView.text)
+        
+        self.viewModel?.tryCreatingNewToDo(with: self.textView.text, onResponse: { todoItem, error in
             
-            self.onNewToDoSave?(addedToDoItem)
+            guard let safeToDoItem = todoItem, error == nil else {
+                assertionFailure()
+                return
+            }
+            
+            self.onNewToDoSave?(safeToDoItem)
             self.navigationController?.popViewController(animated: true)
-        } catch {
-            print(error)
-            assertionFailure()
-        }
+            
+        })
         
     }
     
