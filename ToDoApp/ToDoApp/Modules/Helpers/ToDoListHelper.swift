@@ -21,15 +21,18 @@ extension ToDoListHelper {
     
     @discardableResult
     func addNewToDo(with description: String) throws -> ToDoItem {
+        
+        let safeDescription = description.trimmingCharacters(in: .whitespacesAndNewlines)
+        
         // Check for description
-        if description.isEmpty {
+        if safeDescription.isEmpty {
             throw ToDoError.emptyDescription
         }
         
         // Save
         let todoItem = ToDoItem(id: UUID(),
                                 createdAt: Date(),
-                                description: description)
+                                description: safeDescription)
         
         // Add to empty list
         if self.todos.isEmpty {
