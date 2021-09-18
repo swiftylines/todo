@@ -8,15 +8,15 @@
 import UIKit
 import CoreUIKit
 
-class AddToDoView: UIViewController, BaseInitializableView {
+class AddToDoView: UIViewController, BaseInitializableView, AddToDoViewProvider {
     
     // MARK: - Properties
     private(set) var viewModel: AddToDoViewModel?
     private var todoHelper = ToDoListHelper.shared
     
     // MARK: - Views
-    private lazy var textView = UITextView()
-    private lazy var saveToDoButtonView = UIBarButtonItem()
+    private(set) var textView = UITextView()
+    private(set) var saveToDoButtonView = UIBarButtonItem()
     
     // MARK: - Callbacks
     var onNewToDoSave: ((ToDoItem) -> Void)?
@@ -77,6 +77,19 @@ class AddToDoView: UIViewController, BaseInitializableView {
         self.navigationItem.rightBarButtonItem = self.saveToDoButtonView
     }
     
+}
+
+extension AddToDoView: UITextViewDelegate {
+    
+    func textViewDidChange(_ textView: UITextView) {
+        self.checkAndSetupSaveToDoButtonVIew()
+    }
+    
+}
+
+// MARK: - Helpers
+extension AddToDoView {
+    
     @objc private func didTapSaveToDoButtonView() {
         do {
             let addedToDoItem = try self.todoHelper.addNewToDo(with: self.textView.text)
@@ -88,14 +101,6 @@ class AddToDoView: UIViewController, BaseInitializableView {
             assertionFailure()
         }
         
-    }
-    
-}
-
-extension AddToDoView: UITextViewDelegate {
-    
-    func textViewDidChange(_ textView: UITextView) {
-        self.checkAndSetupSaveToDoButtonVIew()
     }
     
 }

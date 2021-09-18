@@ -9,7 +9,7 @@ import CoreUIKit
 
 class ToDoListViewModel: BaseViewModel {
     
-    let todoHelper = ToDoListHelper.shared
+    private let todoHelper = ToDoListHelper.shared
     
     var todos: [ToDoItem] {
         return self.todoHelper.todos

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1337936826F6135400C19470 /* ToDoListHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1337936726F6135400C19470 /* ToDoListHelper.swift */; };
+		1337936A26F619D300C19470 /* AddToDoViewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1337936926F619D300C19470 /* AddToDoViewProvider.swift */; };
 		139E08BF26E13AAE00A72A24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139E08BE26E13AAE00A72A24 /* AppDelegate.swift */; };
 		139E08CE26E13AAE00A72A24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 139E08CC26E13AAE00A72A24 /* LaunchScreen.storyboard */; };
 		139E08E426E13AAE00A72A24 /* ToDoAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139E08E326E13AAE00A72A24 /* ToDoAppUITests.swift */; };
@@ -61,6 +62,7 @@
 
 /* Begin PBXFileReference section */
 		1337936726F6135400C19470 /* ToDoListHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListHelper.swift; sourceTree = "<group>"; };
+		1337936926F619D300C19470 /* AddToDoViewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToDoViewProvider.swift; sourceTree = "<group>"; };
 		139E08BB26E13AAE00A72A24 /* ToDoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		139E08BE26E13AAE00A72A24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		139E08CD26E13AAE00A72A24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -230,6 +232,7 @@
 				139E094226E1498100A72A24 /* ToDoError.swift */,
 				139E093326E1439000A72A24 /* ToDoListDataProvider.swift */,
 				139E093526E143B400A72A24 /* ToDoListViewProvider.swift */,
+				1337936926F619D300C19470 /* AddToDoViewProvider.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -398,6 +401,7 @@
 				139E093426E1439000A72A24 /* ToDoListDataProvider.swift in Sources */,
 				139E092426E13CAD00A72A24 /* AddToDoView.swift in Sources */,
 				139E092626E13CBC00A72A24 /* AddToDoViewModel.swift in Sources */,
+				1337936A26F619D300C19470 /* AddToDoViewProvider.swift in Sources */,
 				13FC36D526E2A85800D5D517 /* ToDoItemCell.swift in Sources */,
 				139E094326E1498100A72A24 /* ToDoError.swift in Sources */,
 				13FC36CE26E2A33D00D5D517 /* ToDoListView+UITableViewDataSource.swift in Sources */,
