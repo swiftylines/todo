@@ -15,7 +15,7 @@ class TestToDoListDataProvider: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        self.sut = MockToDoListDataProvider(todos: [])
+        self.sut = ToDoListHelper.shared
     }
     
     override func tearDown() {
