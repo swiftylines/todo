@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		134E17A626E29C320057F70C /* UIVIew+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134E17A526E29C320057F70C /* UIVIew+Constraints.swift */; };
+		1354C54826F7645D00C8294C /* TestUIViewConstraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1354C54726F7645D00C8294C /* TestUIViewConstraints.swift */; };
 		139E090726E13BB900A72A24 /* CoreUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 139E08FD26E13BB900A72A24 /* CoreUIKit.framework */; };
 		139E090E26E13BB900A72A24 /* CoreUIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 139E090026E13BB900A72A24 /* CoreUIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		139E092826E13CE600A72A24 /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139E092726E13CE600A72A24 /* BaseView.swift */; };
@@ -30,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		134E17A526E29C320057F70C /* UIVIew+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIew+Constraints.swift"; sourceTree = "<group>"; };
+		1354C54726F7645D00C8294C /* TestUIViewConstraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestUIViewConstraints.swift; sourceTree = "<group>"; };
 		139E08FD26E13BB900A72A24 /* CoreUIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CoreUIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		139E090026E13BB900A72A24 /* CoreUIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreUIKit.h; sourceTree = "<group>"; };
 		139E090126E13BB900A72A24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 			children = (
 				139E090D26E13BB900A72A24 /* Info.plist */,
 				13ED670A26F713B6008F2DE4 /* TestBaseTableView.swift */,
+				1354C54726F7645D00C8294C /* TestUIViewConstraints.swift */,
 			);
 			path = CoreUIKitTests;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13ED670B26F713B6008F2DE4 /* TestBaseTableView.swift in Sources */,
+				1354C54826F7645D00C8294C /* TestUIViewConstraints.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
