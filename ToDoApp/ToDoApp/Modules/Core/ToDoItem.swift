@@ -8,7 +8,13 @@
 import Foundation
 
 struct ToDoItem {
+    
+    /// Unique todo identifier
     let id: UUID
+    
+    /// Date and time, when todo item was created
     let createdAt: Date
+    
+    /// Todo description
     let description: String
 }
