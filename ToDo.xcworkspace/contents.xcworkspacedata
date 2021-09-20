@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:CoreStorageKit/CoreStorageKit.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:CoreUIKit/CoreUIKit.xcodeproj">
    </FileRef>
    <FileRef
