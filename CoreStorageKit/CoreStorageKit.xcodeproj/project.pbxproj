@@ -8,8 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		1307311D26F8E123004E419B /* CoreStorageKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1307311326F8E123004E419B /* CoreStorageKit.framework */; };
-		1307312226F8E123004E419B /* CoreStorageKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1307312126F8E123004E419B /* CoreStorageKitTests.swift */; };
 		1307312426F8E123004E419B /* CoreStorageKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 1307311626F8E123004E419B /* CoreStorageKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1307313226F8E26A004E419B /* TestCoreStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1307313126F8E26A004E419B /* TestCoreStorageManager.swift */; };
+		1307313526F8E2B1004E419B /* CoreStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1307313426F8E2B1004E419B /* CoreStorageProvider.swift */; };
+		1307313826F8EC87004E419B /* TestCoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1307313626F8EC87004E419B /* TestCoreDataModel.xcdatamodeld */; };
+		134DBE1326FEE9F800201EF3 /* CoreStorageProviderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134DBE1226FEE9F800201EF3 /* CoreStorageProviderError.swift */; };
+		13863D9B270042FA00923C9E /* CoreStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13863D9A270042FA00923C9E /* CoreStorageManager.swift */; };
+		13863DA427004A4300923C9E /* TestToDoEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13863DA227004A4300923C9E /* TestToDoEntity+CoreDataClass.swift */; };
+		13863DA527004A4300923C9E /* TestToDoEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13863DA327004A4300923C9E /* TestToDoEntity+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,8 +33,14 @@
 		1307311626F8E123004E419B /* CoreStorageKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoreStorageKit.h; sourceTree = "<group>"; };
 		1307311726F8E123004E419B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1307311C26F8E123004E419B /* CoreStorageKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreStorageKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1307312126F8E123004E419B /* CoreStorageKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreStorageKitTests.swift; sourceTree = "<group>"; };
 		1307312326F8E123004E419B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1307313126F8E26A004E419B /* TestCoreStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCoreStorageManager.swift; sourceTree = "<group>"; };
+		1307313426F8E2B1004E419B /* CoreStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreStorageProvider.swift; sourceTree = "<group>"; };
+		1307313726F8EC87004E419B /* TestCoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TestCoreDataModel.xcdatamodel; sourceTree = "<group>"; };
+		134DBE1226FEE9F800201EF3 /* CoreStorageProviderError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreStorageProviderError.swift; sourceTree = "<group>"; };
+		13863D9A270042FA00923C9E /* CoreStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreStorageManager.swift; sourceTree = "<group>"; };
+		13863DA227004A4300923C9E /* TestToDoEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TestToDoEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		13863DA327004A4300923C9E /* TestToDoEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TestToDoEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,7 +83,9 @@
 		1307311526F8E123004E419B /* CoreStorageKit */ = {
 			isa = PBXGroup;
 			children = (
+				1307313326F8E2A6004E419B /* Core */,
 				1307313026F8E14C004E419B /* SupportingFiles */,
+				13863D9A270042FA00923C9E /* CoreStorageManager.swift */,
 			);
 			path = CoreStorageKit;
 			sourceTree = "<group>";
@@ -79,8 +93,9 @@
 		1307312026F8E123004E419B /* CoreStorageKitTests */ = {
 			isa = PBXGroup;
 			children = (
-				1307312126F8E123004E419B /* CoreStorageKitTests.swift */,
-				1307312326F8E123004E419B /* Info.plist */,
+				13863D9D270047D000923C9E /* TestDataModels */,
+				13863D9C270047B400923C9E /* SupportingFiles */,
+				1307313126F8E26A004E419B /* TestCoreStorageManager.swift */,
 			);
 			path = CoreStorageKitTests;
 			sourceTree = "<group>";
@@ -92,6 +107,33 @@
 				1307311726F8E123004E419B /* Info.plist */,
 			);
 			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		1307313326F8E2A6004E419B /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				1307313426F8E2B1004E419B /* CoreStorageProvider.swift */,
+				134DBE1226FEE9F800201EF3 /* CoreStorageProviderError.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		13863D9C270047B400923C9E /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				1307312326F8E123004E419B /* Info.plist */,
+				1307313626F8EC87004E419B /* TestCoreDataModel.xcdatamodeld */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		13863D9D270047D000923C9E /* TestDataModels */ = {
+			isa = PBXGroup;
+			children = (
+				13863DA227004A4300923C9E /* TestToDoEntity+CoreDataClass.swift */,
+				13863DA327004A4300923C9E /* TestToDoEntity+CoreDataProperties.swift */,
+			);
+			path = TestDataModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -155,9 +197,11 @@
 				TargetAttributes = {
 					1307311226F8E123004E419B = {
 						CreatedOnToolsVersion = 12.5.1;
+						LastSwiftMigration = 1250;
 					};
 					1307311B26F8E123004E419B = {
 						CreatedOnToolsVersion = 12.5.1;
+						LastSwiftMigration = 1250;
 					};
 				};
 			};
@@ -202,6 +246,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				134DBE1326FEE9F800201EF3 /* CoreStorageProviderError.swift in Sources */,
+				1307313526F8E2B1004E419B /* CoreStorageProvider.swift in Sources */,
+				13863D9B270042FA00923C9E /* CoreStorageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,7 +256,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1307312226F8E123004E419B /* CoreStorageKitTests.swift in Sources */,
+				13863DA527004A4300923C9E /* TestToDoEntity+CoreDataProperties.swift in Sources */,
+				13863DA427004A4300923C9E /* TestToDoEntity+CoreDataClass.swift in Sources */,
+				1307313826F8EC87004E419B /* TestCoreDataModel.xcdatamodeld in Sources */,
+				1307313226F8E26A004E419B /* TestCoreStorageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,7 +326,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -334,7 +384,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -349,6 +399,7 @@
 		1307312826F8E123004E419B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -364,6 +415,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.CoreStorageKit;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -372,6 +424,7 @@
 		1307312926F8E123004E419B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -395,8 +448,10 @@
 		1307312B26F8E123004E419B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = CoreStorageKitTests/Info.plist;
+				INFOPLIST_FILE = CoreStorageKitTests/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -404,6 +459,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.example.CoreStorageKitTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -412,8 +468,10 @@
 		1307312C26F8E123004E419B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = CoreStorageKitTests/Info.plist;
+				INFOPLIST_FILE = CoreStorageKitTests/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -457,6 +515,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1307313626F8EC87004E419B /* TestCoreDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1307313726F8EC87004E419B /* TestCoreDataModel.xcdatamodel */,
+			);
+			currentVersion = 1307313726F8EC87004E419B /* TestCoreDataModel.xcdatamodel */;
+			path = TestCoreDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1307310A26F8E123004E419B /* Project object */;
 }
