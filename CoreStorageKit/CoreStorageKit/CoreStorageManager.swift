@@ -81,7 +81,19 @@ public class CoreStorageManager: CoreStorageProvider {
     
     public func delete(managedObject: NSManagedObject,
                        onCompletion: @escaping (Error?) -> Void) {
-        
+        do {
+            let safePersistentContainer = try self.getPersistentContainer()
+            
+            safePersistentContainer.performBackgroundTask { context in
+                context.delete(managedObject)
+                
+                self.save { error in
+                    onCompletion(error)
+                }
+            }
+        } catch {
+            onCompletion(error)
+        }
     }
     
 }
