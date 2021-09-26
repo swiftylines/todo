@@ -21,8 +21,10 @@ protocol CoreStorageProvider {
     func save(onCompletion: @escaping (Error?) -> Void)
     
     func fetch<ManagedObject: NSManagedObject>(entity: ManagedObject.Type,
+                                               with predicate: NSPredicate?,
                                                onCompletion: @escaping ([NSManagedObject]?, Error?) -> Void)
     
-    func delete()
+    func delete(managedObject: NSManagedObject,
+                onCompletion: @escaping (Error?) -> Void)
     
 }

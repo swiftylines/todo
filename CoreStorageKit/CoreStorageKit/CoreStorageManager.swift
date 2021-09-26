@@ -27,14 +27,17 @@ public class CoreStorageManager: CoreStorageProvider {
             
             safePersistentContainer.performBackgroundTask { context in
                 do {
-                    
                     if context.hasChanges {
                         try context.save()
                     }
                     
-                    onCompletion(nil)
+                    context.perform {
+                        onCompletion(nil)
+                    }
                 } catch {
-                    onCompletion(CoreStorageProviderError.savingFailed(error))
+                    context.perform {
+                        onCompletion(CoreStorageProviderError.savingFailed(error))
+                    }
                 }
             }
         } catch {
@@ -43,24 +46,41 @@ public class CoreStorageManager: CoreStorageProvider {
     }
     
     public func fetch<ManagedObject: NSManagedObject>(entity: ManagedObject.Type,
+                                                      with predicate: NSPredicate?,
                                                       onCompletion: @escaping ([NSManagedObject]?, Error?) -> Void) {
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: entity))
         
-        self.persistentContainer?.performBackgroundTask { context in
-            do {
-                if let result = try context.fetch(fetchRequest) as? [NSManagedObject] {
-                    onCompletion(result, nil)
-                    return
+        do {
+            let safePersistentContainer = try self.getPersistentContainer()
+            
+            safePersistentContainer.performBackgroundTask { context in
+                do {
+                    let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: entity))
+                    fetchRequest.predicate = predicate
+                    
+                    if let result = try context.fetch(fetchRequest) as? [NSManagedObject] {
+                        onCompletion(result, nil)
+                        
+                        return
+                    }
+                    
+                    context.perform {
+                        onCompletion(nil, CoreStorageProviderError.fetchingFailed(CoreStorageProviderError.fetchResultConvertionFailed))
+                    }
+                } catch {
+                    context.perform {
+                        onCompletion(nil, CoreStorageProviderError.fetchingFailed(error))
+                    }
                 }
-                
-                onCompletion(nil, CoreStorageProviderError.fetchingFailed(CoreStorageProviderError.fetchResultConvertionFailed))
-            } catch {
-                onCompletion(nil, CoreStorageProviderError.fetchingFailed(error))
             }
+            
+        } catch {
+            onCompletion(nil, CoreStorageProviderError.fetchingFailed(error))
         }
+        
     }
     
-    public func delete() {
+    public func delete(managedObject: NSManagedObject,
+                       onCompletion: @escaping (Error?) -> Void) {
         
     }
     
