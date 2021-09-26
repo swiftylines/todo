@@ -16,6 +16,9 @@
 		13863D9B270042FA00923C9E /* CoreStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13863D9A270042FA00923C9E /* CoreStorageManager.swift */; };
 		13863DA427004A4300923C9E /* TestToDoEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13863DA227004A4300923C9E /* TestToDoEntity+CoreDataClass.swift */; };
 		13863DA527004A4300923C9E /* TestToDoEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13863DA327004A4300923C9E /* TestToDoEntity+CoreDataProperties.swift */; };
+		13863DA82700742400923C9E /* NSManagesObject+Mappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13863DA72700742400923C9E /* NSManagesObject+Mappable.swift */; };
+		13863DAA2700744100923C9E /* ManagedObjectMappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13863DA92700744100923C9E /* ManagedObjectMappable.swift */; };
+		13863DAC270075C500923C9E /* DataModelMappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13863DAB270075C500923C9E /* DataModelMappable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +44,9 @@
 		13863D9A270042FA00923C9E /* CoreStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreStorageManager.swift; sourceTree = "<group>"; };
 		13863DA227004A4300923C9E /* TestToDoEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TestToDoEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		13863DA327004A4300923C9E /* TestToDoEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TestToDoEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		13863DA72700742400923C9E /* NSManagesObject+Mappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagesObject+Mappable.swift"; sourceTree = "<group>"; };
+		13863DA92700744100923C9E /* ManagedObjectMappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectMappable.swift; sourceTree = "<group>"; };
+		13863DAB270075C500923C9E /* DataModelMappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelMappable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,9 +89,10 @@
 		1307311526F8E123004E419B /* CoreStorageKit */ = {
 			isa = PBXGroup;
 			children = (
+				13863D9A270042FA00923C9E /* CoreStorageManager.swift */,
+				13863DA6270073C000923C9E /* Extensions */,
 				1307313326F8E2A6004E419B /* Core */,
 				1307313026F8E14C004E419B /* SupportingFiles */,
-				13863D9A270042FA00923C9E /* CoreStorageManager.swift */,
 			);
 			path = CoreStorageKit;
 			sourceTree = "<group>";
@@ -114,6 +121,8 @@
 			children = (
 				1307313426F8E2B1004E419B /* CoreStorageProvider.swift */,
 				134DBE1226FEE9F800201EF3 /* CoreStorageProviderError.swift */,
+				13863DA92700744100923C9E /* ManagedObjectMappable.swift */,
+				13863DAB270075C500923C9E /* DataModelMappable.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -134,6 +143,14 @@
 				13863DA327004A4300923C9E /* TestToDoEntity+CoreDataProperties.swift */,
 			);
 			path = TestDataModels;
+			sourceTree = "<group>";
+		};
+		13863DA6270073C000923C9E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				13863DA72700742400923C9E /* NSManagesObject+Mappable.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,7 +264,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				134DBE1326FEE9F800201EF3 /* CoreStorageProviderError.swift in Sources */,
+				13863DAC270075C500923C9E /* DataModelMappable.swift in Sources */,
+				13863DAA2700744100923C9E /* ManagedObjectMappable.swift in Sources */,
 				1307313526F8E2B1004E419B /* CoreStorageProvider.swift in Sources */,
+				13863DA82700742400923C9E /* NSManagesObject+Mappable.swift in Sources */,
 				13863D9B270042FA00923C9E /* CoreStorageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

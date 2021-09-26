@@ -42,8 +42,22 @@ public class CoreStorageManager: CoreStorageProvider {
         }
     }
     
-    public func fetch() {
+    public func fetch<ManagedObject: NSManagedObject>(entity: ManagedObject.Type,
+                                                      onCompletion: @escaping ([NSManagedObject]?, Error?) -> Void) {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: entity))
         
+        self.persistentContainer?.performBackgroundTask { context in
+            do {
+                if let result = try context.fetch(fetchRequest) as? [NSManagedObject] {
+                    onCompletion(result, nil)
+                    return
+                }
+                
+                onCompletion(nil, CoreStorageProviderError.fetchingFailed(CoreStorageProviderError.fetchResultConvertionFailed))
+            } catch {
+                onCompletion(nil, CoreStorageProviderError.fetchingFailed(error))
+            }
+        }
     }
     
     public func delete() {

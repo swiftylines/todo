@@ -13,6 +13,7 @@ enum CoreStorageProviderError: Error {
     case persistentContainerNil
     case persistentDescriptionNil
     case persistentCoordinatorNil
+    case fetchResultConvertionFailed
     case loadingPersistentStoresFailed(Error?)
     case savingFailed(Error?)
     case fetchingFailed(Error?)
