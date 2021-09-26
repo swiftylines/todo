@@ -8,6 +8,10 @@
 import Foundation
 import CoreData
 
+/// Thread-safe manager for working with local storage.
+///
+/// - Important:
+///     - It's always safe to use single instance for each data model
 public class CoreStorageManager: CoreStorageProvider {
     
     private(set) public var persistentContainer: NSPersistentContainer?

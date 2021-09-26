@@ -18,12 +18,37 @@ protocol CoreStorageProvider {
          onCompletion: @escaping (Error?) -> Void)
     
     // MARK: - Features
+    
+    /// Saves context of current managed object
+    ///
+    /// - Important:
+    ///     - Retruns result on the caller thread
+    ///
+    /// - Parameter:
+    ///     - onCompletion: Closure, executed after success/failed save operation with any possible error
     func save(onCompletion: @escaping (Error?) -> Void)
     
+    /// Fetches managed objects with provided entity and predicate details
+    ///
+    /// - Important:
+    ///     - Retruns result on the caller thread
+    ///
+    /// - Parameter:
+    ///     - entity: Managed object type
+    ///     - with: predicate (used for filtering)
+    ///     - onCompletion: Closure, executed after success/failed fetch operation with any possible error or managed objects
     func fetch<ManagedObject: NSManagedObject>(entity: ManagedObject.Type,
                                                with predicate: NSPredicate?,
                                                onCompletion: @escaping ([NSManagedObject]?, Error?) -> Void)
     
+    /// Deletes managed objects
+    ///
+    /// - Important:
+    ///     - Retruns result on the caller thread
+    ///
+    /// - Parameter:
+    ///     - managedObject: maching object type, that needs to be deleted
+    ///     - onCompletion: Closure, executed after success/failed fetch operation with any possible error
     func delete(managedObject: NSManagedObject,
                 onCompletion: @escaping (Error?) -> Void)
     
