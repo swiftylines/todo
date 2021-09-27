@@ -17,12 +17,16 @@ public class CoreStorageManager: CoreStorageProvider {
     private(set) public var persistentContainer: NSPersistentContainer?
     public let coreDataModelBundle: Bundle
     public let coreDataModelName: String
+    public let shouldStoreInMemoryOnly: Bool
     
     required public init(with coreDataModelName: String,
                          coreDataModelBundle: Bundle,
+                         shouldStoreInMemoryOnly: Bool = false,
                          onCompletion: @escaping (Error?) -> Void) {
         self.coreDataModelName = coreDataModelName
         self.coreDataModelBundle = coreDataModelBundle
+        self.shouldStoreInMemoryOnly = shouldStoreInMemoryOnly
+        
         self.setupPersistentContainer() { err in
             onCompletion(err)
         }
@@ -112,9 +116,18 @@ extension CoreStorageManager {
         
         if let dataModelURL = self.coreDataModelBundle.url(forResource: self.coreDataModelName, withExtension: "momd"),
            let managedObjectModel =  NSManagedObjectModel(contentsOf: dataModelURL) {
+            
+            var storeDescription = NSPersistentStoreDescription()
+            
             let container = NSPersistentContainer(name: self.coreDataModelName, managedObjectModel: managedObjectModel)
             container.loadPersistentStores { des, error in
                 onCompletion(error)
+                storeDescription = des
+            }
+            
+            if self.shouldStoreInMemoryOnly {
+                storeDescription.type = NSInMemoryStoreType
+                self.persistentContainer?.persistentStoreDescriptions = [storeDescription]
             }
             
             self.persistentContainer = container

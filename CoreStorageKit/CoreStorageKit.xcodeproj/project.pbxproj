@@ -13,6 +13,7 @@
 		1307313526F8E2B1004E419B /* CoreStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1307313426F8E2B1004E419B /* CoreStorageProvider.swift */; };
 		1307313826F8EC87004E419B /* TestCoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1307313626F8EC87004E419B /* TestCoreDataModel.xcdatamodeld */; };
 		134DBE1326FEE9F800201EF3 /* CoreStorageProviderError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134DBE1226FEE9F800201EF3 /* CoreStorageProviderError.swift */; };
+		137EA98D270164D0001D5599 /* MockCoreStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 137EA98C270164D0001D5599 /* MockCoreStorageManager.swift */; };
 		13863D9B270042FA00923C9E /* CoreStorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13863D9A270042FA00923C9E /* CoreStorageManager.swift */; };
 		13863DA82700742400923C9E /* NSManagesObject+Mappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13863DA72700742400923C9E /* NSManagesObject+Mappable.swift */; };
 		13863DAA2700744100923C9E /* ManagedObjectMappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13863DA92700744100923C9E /* ManagedObjectMappable.swift */; };
@@ -39,6 +40,9 @@
 		1307313426F8E2B1004E419B /* CoreStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreStorageProvider.swift; sourceTree = "<group>"; };
 		1307313726F8EC87004E419B /* TestCoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TestCoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		134DBE1226FEE9F800201EF3 /* CoreStorageProviderError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreStorageProviderError.swift; sourceTree = "<group>"; };
+		137EA987270161CD001D5599 /* TestToDoEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TestToDoEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		137EA988270161CD001D5599 /* TestToDoEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TestToDoEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		137EA98C270164D0001D5599 /* MockCoreStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCoreStorageManager.swift; sourceTree = "<group>"; };
 		13863D9A270042FA00923C9E /* CoreStorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreStorageManager.swift; sourceTree = "<group>"; };
 		13863DA72700742400923C9E /* NSManagesObject+Mappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagesObject+Mappable.swift"; sourceTree = "<group>"; };
 		13863DA92700744100923C9E /* ManagedObjectMappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManagedObjectMappable.swift; sourceTree = "<group>"; };
@@ -96,6 +100,7 @@
 		1307312026F8E123004E419B /* CoreStorageKitTests */ = {
 			isa = PBXGroup;
 			children = (
+				137EA98B270164A9001D5599 /* Mocks */,
 				13863D9D270047D000923C9E /* TestDataModels */,
 				13863D9C270047B400923C9E /* SupportingFiles */,
 				1307313126F8E26A004E419B /* TestCoreStorageManager.swift */,
@@ -123,6 +128,14 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
+		137EA98B270164A9001D5599 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				137EA98C270164D0001D5599 /* MockCoreStorageManager.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		13863D9C270047B400923C9E /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
@@ -135,6 +148,8 @@
 		13863D9D270047D000923C9E /* TestDataModels */ = {
 			isa = PBXGroup;
 			children = (
+				137EA987270161CD001D5599 /* TestToDoEntity+CoreDataClass.swift */,
+				137EA988270161CD001D5599 /* TestToDoEntity+CoreDataProperties.swift */,
 			);
 			path = TestDataModels;
 			sourceTree = "<group>";
@@ -272,6 +287,7 @@
 			files = (
 				1307313826F8EC87004E419B /* TestCoreDataModel.xcdatamodeld in Sources */,
 				1307313226F8E26A004E419B /* TestCoreStorageManager.swift in Sources */,
+				137EA98D270164D0001D5599 /* MockCoreStorageManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

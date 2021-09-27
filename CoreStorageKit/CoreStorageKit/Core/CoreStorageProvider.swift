@@ -13,10 +13,12 @@ protocol CoreStorageProvider {
     var persistentContainer: NSPersistentContainer? { get }
     var coreDataModelName: String { get }
     var coreDataModelBundle: Bundle { get }
+    var shouldStoreInMemoryOnly: Bool { get }
     
     // MARK: - Init
     init(with coreDataModelName: String,
          coreDataModelBundle: Bundle,
+         shouldStoreInMemoryOnly: Bool,
          onCompletion: @escaping (Error?) -> Void)
     
     // MARK: - Features

@@ -15,8 +15,8 @@ class TestCoreStorageManager: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        self.sut = CoreStorageManager(with: "TestCoreDataModel",
-                                      coreDataModelBundle: Bundle(for: type(of: self))) { err in
+        self.sut = MockCoreStorageManager(with: "TestCoreDataModel",
+                                          coreDataModelBundle: Bundle(for: type(of: self))) { err in
             assert(err == nil)
         }
     }
@@ -40,8 +40,8 @@ extension TestCoreStorageManager {
         var _initError: Error?
         var _saveError: Error?
         
-        let manager = CoreStorageManager(with: "TestCoreDataModel",
-                                         coreDataModelBundle: Bundle(for: type(of: self))) { err in
+        let manager = MockCoreStorageManager(with: "TestCoreDataModel",
+                                             coreDataModelBundle: Bundle(for: type(of: self))) { err in
             _initError = err
             expInit.fulfill()
         }
@@ -68,8 +68,8 @@ extension TestCoreStorageManager {
         var _initError: Error?
         var _saveError: Error?
         
-        let manager = CoreStorageManager(with: dataModelName,
-                                         coreDataModelBundle: bundle) { err in
+        let manager = MockCoreStorageManager(with: dataModelName,
+                                             coreDataModelBundle: bundle) { err in
             _initError = err
             expInit.fulfill()
         }
@@ -84,7 +84,16 @@ extension TestCoreStorageManager {
         XCTAssertNotNil(_initError)
         XCTAssertNotNil(_saveError)
         XCTAssertEqual(_initError?.localizedDescription,
-                       CoreStorageProviderError.couldNotFindCoreDataModel(withName: dataModelName, inBundle: bundle).localizedDescription)
+                       CoreStorageProviderError.couldNotFindCoreDataModel(withName: dataModelName,
+                                                                          inBundle: bundle).localizedDescription)
+    }
+    
+}
+
+extension TestCoreStorageManager {
+    
+    func test_create_success() {
+        
     }
     
 }
