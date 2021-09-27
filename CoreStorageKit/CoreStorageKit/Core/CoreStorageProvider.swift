@@ -12,9 +12,11 @@ protocol CoreStorageProvider {
     // MARK: - Properties
     var persistentContainer: NSPersistentContainer? { get }
     var coreDataModelName: String { get }
+    var coreDataModelBundle: Bundle { get }
     
     // MARK: - Init
     init(with coreDataModelName: String,
+         coreDataModelBundle: Bundle,
          onCompletion: @escaping (Error?) -> Void)
     
     // MARK: - Features

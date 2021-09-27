@@ -15,11 +15,14 @@ import CoreData
 public class CoreStorageManager: CoreStorageProvider {
     
     private(set) public var persistentContainer: NSPersistentContainer?
+    public let coreDataModelBundle: Bundle
     public let coreDataModelName: String
     
     required public init(with coreDataModelName: String,
+                         coreDataModelBundle: Bundle,
                          onCompletion: @escaping (Error?) -> Void) {
         self.coreDataModelName = coreDataModelName
+        self.coreDataModelBundle = coreDataModelBundle
         self.setupPersistentContainer() { err in
             onCompletion(err)
         }
@@ -35,17 +38,13 @@ public class CoreStorageManager: CoreStorageProvider {
                         try context.save()
                     }
                     
-                    context.perform {
-                        onCompletion(nil)
-                    }
+                    onCompletion(nil)
                 } catch {
-                    context.perform {
-                        onCompletion(CoreStorageProviderError.savingFailed(error))
-                    }
+                    onCompletion(CoreStorageProviderError.savingFailed(error))
                 }
             }
         } catch {
-            onCompletion(CoreStorageProviderError.savingFailed(CoreStorageProviderError.persistentContainerNil))
+            onCompletion(CoreStorageProviderError.savingFailed(error))
         }
     }
     
@@ -67,13 +66,9 @@ public class CoreStorageManager: CoreStorageProvider {
                         return
                     }
                     
-                    context.perform {
-                        onCompletion(nil, CoreStorageProviderError.fetchingFailed(CoreStorageProviderError.fetchResultConvertionFailed))
-                    }
+                    onCompletion(nil, CoreStorageProviderError.fetchingFailed(CoreStorageProviderError.fetchResultConvertionFailed))
                 } catch {
-                    context.perform {
-                        onCompletion(nil, CoreStorageProviderError.fetchingFailed(error))
-                    }
+                    onCompletion(nil, CoreStorageProviderError.fetchingFailed(error))
                 }
             }
             
@@ -114,12 +109,20 @@ extension CoreStorageManager {
     }
     
     private func setupPersistentContainer(onCompletion: @escaping (Error?) -> Void) {
-        let container = NSPersistentContainer(name: self.coreDataModelName)
-        container.loadPersistentStores { des, error in
-            onCompletion(error)
+        
+        if let dataModelURL = self.coreDataModelBundle.url(forResource: self.coreDataModelName, withExtension: "momd"),
+           let managedObjectModel =  NSManagedObjectModel(contentsOf: dataModelURL) {
+            let container = NSPersistentContainer(name: self.coreDataModelName, managedObjectModel: managedObjectModel)
+            container.loadPersistentStores { des, error in
+                onCompletion(error)
+            }
+            
+            self.persistentContainer = container
+        } else {
+            onCompletion(CoreStorageProviderError.couldNotFindCoreDataModel(withName: self.coreDataModelName,
+                                                                            inBundle: self.coreDataModelBundle))
         }
         
-        self.persistentContainer = container
     }
     
 }
