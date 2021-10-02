@@ -13,4 +13,6 @@ enum ToDoError: Error {
     case emptyDescription
     /// Trying to access a todo item that does not exist
     case doesNotExist
+    /// Trying to cast an object into another object
+    case convertionFailed(message: String)
 }

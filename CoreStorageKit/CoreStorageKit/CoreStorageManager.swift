@@ -115,7 +115,7 @@ extension CoreStorageManager {
         throw CoreStorageProviderError.persistentContainerNil
     }
     
-    func getManagedObjectContext() throws -> NSManagedObjectContext {
+    public func getManagedObjectContext() throws -> NSManagedObjectContext {
         do {
             return try self.getPersistentContainer().viewContext
         } catch {
