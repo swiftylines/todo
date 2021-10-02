@@ -11,4 +11,8 @@ struct ToDoItemCellViewModel: BaseViewModel {
     
     let todoItem: ToDoItem
     
+    var createdAtStr: String {
+        return ToDoDateFormat.localFormate(from: self.todoItem.createdAt)
+    }
+    
 }

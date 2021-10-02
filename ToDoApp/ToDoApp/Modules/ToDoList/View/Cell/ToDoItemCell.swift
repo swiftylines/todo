@@ -50,7 +50,7 @@ class ToDoItemCell: BaseTableViewCell<ToDoItemCellViewModel> {
         super.setupData()
         
         self.todoDescriptionLabel.text = self.viewModel?.todoItem.description
-        self.todoTimeLabel.text = self.viewModel?.todoItem.createdAt.description
+        self.todoTimeLabel.text = self.viewModel?.createdAtStr
     }
     
 }
