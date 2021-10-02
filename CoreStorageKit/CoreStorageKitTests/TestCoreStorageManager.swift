@@ -7,6 +7,7 @@
 
 @testable import CoreStorageKit
 import XCTest
+import CoreData
 
 class TestCoreStorageManager: XCTestCase {
     
@@ -90,31 +91,25 @@ extension TestCoreStorageManager {
     
 }
 
+// MARK: - Test Operations
 extension TestCoreStorageManager {
     
-    func test_create_success() {
+    func test_createAndFetch_success() {
         do {
             let safeContext = try self.sut.getManagedObjectContext()
             
             let saveExp = expectation(description: "test_create_success_save")
             let fetchExp = expectation(description: "test_create_success_fetch")
             
-            let todoId = UUID()
-            let todoText = "This is my todo"
-            let todoCreatedAt = Date()
-            
+            var _savedTestToDo: TestToDo?
             var _saveError: Error?
             var _fetchError: Error?
             var _fetchedToDo: TestToDoEntity?
             
             // save
-            let todo = TestToDoEntity(context: safeContext)
-            todo.id = todoId
-            todo.text = todoText
-            todo.createdAt = todoCreatedAt
-            
-            self.sut.save { err in
-                _saveError = err
+            self.saveNewTestToDo(context: safeContext) { savedTestToDo, error in
+                _savedTestToDo = savedTestToDo
+                _saveError = error
                 saveExp.fulfill()
                 
                 // fetch
@@ -126,17 +121,95 @@ extension TestCoreStorageManager {
                 }
             }
             
+            
             wait(for: [saveExp, fetchExp], timeout: 2)
             
             XCTAssertNil(_saveError)
             XCTAssertNil(_fetchError)
             XCTAssertNotNil(_fetchedToDo)
-            XCTAssertEqual(_fetchedToDo!.id, todoId)
-            XCTAssertEqual(_fetchedToDo!.text, todoText)
-            XCTAssertEqual(_fetchedToDo!.createdAt, todoCreatedAt)
+            XCTAssertEqual(_fetchedToDo!.id, _savedTestToDo?.todoId)
+            XCTAssertEqual(_fetchedToDo!.text, _savedTestToDo?.todoText)
+            XCTAssertEqual(_fetchedToDo!.createdAt, _savedTestToDo?.todoCreatedAt)
             
         } catch {
             assertionFailure()
+        }
+        
+    }
+    
+    func test_deleteSaved_success() {
+        do {
+            let safeContext = try self.sut.getManagedObjectContext()
+            
+            let saveExp = expectation(description: "test_create_success_save")
+            let fetchExp = expectation(description: "test_create_success_fetch")
+            let deleteExp = expectation(description: "test_create_success_delete")
+            
+            var _savedTestToDo: TestToDo?
+            var _fetchedToDo: TestToDoEntity?
+            var _saveError: Error?
+            var _fetchError: Error?
+            var _deleteError: Error?
+            
+            // save
+            self.saveNewTestToDo(context: safeContext) { savedTestToDo, error in
+                _savedTestToDo = savedTestToDo
+                _saveError = error
+                saveExp.fulfill()
+                
+                // fetch
+                self.sut.fetch(entity: TestToDoEntity.self, with: nil) { savedToDo, err in
+                    _fetchedToDo = savedToDo?.first as? TestToDoEntity
+                    _fetchError = err
+                    
+                    fetchExp.fulfill()
+                    
+                    // delete
+                    self.sut.delete(managedObject: _fetchedToDo!) { error in
+                        _deleteError = error
+                        deleteExp.fulfill()
+                    }
+                }
+            }
+            
+            
+            wait(for: [saveExp, fetchExp, deleteExp], timeout: 2)
+            
+            XCTAssertNil(_saveError)
+            XCTAssertNil(_fetchError)
+            XCTAssertNil(_deleteError)
+            XCTAssertNotNil(_savedTestToDo)
+            XCTAssertNotNil(_fetchedToDo)
+            XCTAssertEqual(_fetchedToDo!.id, nil)
+            XCTAssertEqual(_fetchedToDo!.text, nil)
+            XCTAssertEqual(_fetchedToDo!.createdAt, nil)
+            
+        } catch {
+            assertionFailure()
+        }
+        
+    }
+    
+}
+
+// MARK: - Test Helpers
+extension TestCoreStorageManager {
+    
+    func saveNewTestToDo(context: NSManagedObjectContext,
+                         onResponse: @escaping (TestToDo?, Error?) -> Void) {
+        
+        let testToDo = TestToDo(todoId: UUID(),
+                                todoText: "This is my todo",
+                                todoCreatedAt: Date())
+        
+        // save
+        let todo = TestToDoEntity(context: context)
+        todo.id = testToDo.todoId
+        todo.text = testToDo.todoText
+        todo.createdAt = testToDo.todoCreatedAt
+        
+        self.sut.save { err in
+            onResponse(testToDo, err)
         }
         
     }
