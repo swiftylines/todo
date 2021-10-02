@@ -34,6 +34,8 @@ class AddToDoView: UIViewController, BaseInitializableView, AddToDoViewProvider 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "Add New ToDo"
+        
         self.setupViews()
         self.setupData()
     }

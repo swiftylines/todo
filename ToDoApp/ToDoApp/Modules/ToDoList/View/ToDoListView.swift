@@ -29,6 +29,9 @@ class ToDoListView: UIViewController, BaseInitializableView, ToDoListViewProvide
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "ToDo List"
+        self.navigationItem.backButtonTitle = ""
+        
         self.setupViews()
         self.setupData()
     }
