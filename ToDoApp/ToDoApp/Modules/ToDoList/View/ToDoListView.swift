@@ -39,12 +39,14 @@ class ToDoListView: UIViewController, BaseInitializableView, ToDoListViewProvide
         self.setupAddTodoButtonView()
         
         self.viewModel?.onToDoListUpdate = { [weak self] in
-            self?.todoTableView.reloadData()
+            DispatchQueue.main.async {
+                self?.todoTableView.reloadData()
+            }
         }
     }
     
     func setupData() {
-        
+        self.viewModel?.initializeData()
     }
     
     func setupTodoTableView() {

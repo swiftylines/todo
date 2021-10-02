@@ -25,7 +25,7 @@ class ToDoListViewModel: BaseViewModel {
     }
     
     func initializeData() {
-        
+        self.fetchAllToDos()
     }
     
     /// Should be invoked with newly added todo item after new todo item is saved

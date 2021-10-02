@@ -91,17 +91,20 @@ extension AddToDoView {
     
     @objc private func didTapSaveToDoButtonView() {
         
-        self.viewModel?.tryCreatingNewToDo(with: self.textView.text, onResponse: { todoItem, error in
-            
-            guard let safeToDoItem = todoItem, error == nil else {
-                assertionFailure()
-                return
-            }
-            
-            self.onNewToDoSave?(safeToDoItem)
-            self.navigationController?.popViewController(animated: true)
-            
-        })
+        self.viewModel?
+            .tryCreatingNewToDo(with: self.textView.text, onResponse: { todoItem, error in
+                
+                guard let safeToDoItem = todoItem, error == nil else {
+                    assertionFailure()
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    self.onNewToDoSave?(safeToDoItem)
+                    self.navigationController?.popViewController(animated: true)
+                }
+                
+            })
         
     }
     
