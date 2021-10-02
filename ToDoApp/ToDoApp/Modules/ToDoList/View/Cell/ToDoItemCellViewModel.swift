@@ -9,6 +9,6 @@ import CoreUIKit
 
 struct ToDoItemCellViewModel: BaseViewModel {
     
-    let todoDescription: String
+    let todoItem: ToDoItem
     
 }
