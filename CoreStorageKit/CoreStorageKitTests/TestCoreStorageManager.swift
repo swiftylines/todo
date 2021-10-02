@@ -93,6 +93,51 @@ extension TestCoreStorageManager {
 extension TestCoreStorageManager {
     
     func test_create_success() {
+        do {
+            let safeContext = try self.sut.getManagedObjectContext()
+            
+            let saveExp = expectation(description: "test_create_success_save")
+            let fetchExp = expectation(description: "test_create_success_fetch")
+            
+            let todoId = UUID()
+            let todoText = "This is my todo"
+            let todoCreatedAt = Date()
+            
+            var _saveError: Error?
+            var _fetchError: Error?
+            var _fetchedToDo: TestToDoEntity?
+            
+            // save
+            let todo = TestToDoEntity(context: safeContext)
+            todo.id = todoId
+            todo.text = todoText
+            todo.createdAt = todoCreatedAt
+            
+            self.sut.save { err in
+                _saveError = err
+                saveExp.fulfill()
+                
+                // fetch
+                self.sut.fetch(entity: TestToDoEntity.self, with: nil) { savedToDo, err in
+                    _fetchedToDo = savedToDo?.first as? TestToDoEntity
+                    _fetchError = err
+                    
+                    fetchExp.fulfill()
+                }
+            }
+            
+            wait(for: [saveExp, fetchExp], timeout: 2)
+            
+            XCTAssertNil(_saveError)
+            XCTAssertNil(_fetchError)
+            XCTAssertNotNil(_fetchedToDo)
+            XCTAssertEqual(_fetchedToDo!.id, todoId)
+            XCTAssertEqual(_fetchedToDo!.text, todoText)
+            XCTAssertEqual(_fetchedToDo!.createdAt, todoCreatedAt)
+            
+        } catch {
+            assertionFailure()
+        }
         
     }
     

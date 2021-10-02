@@ -35,11 +35,12 @@ public class CoreStorageManager: CoreStorageProvider {
     public func save(onCompletion: @escaping (Error?) -> Void) {
         do {
             let safePersistentContainer = try self.getPersistentContainer()
+            let safeManagedContext = try self.getManagedObjectContext()
             
-            safePersistentContainer.performBackgroundTask { context in
+            safePersistentContainer.performBackgroundTask { _ in
                 do {
-                    if context.hasChanges {
-                        try context.save()
+                    if safeManagedContext.hasChanges {
+                        try safeManagedContext.save()
                     }
                     
                     onCompletion(nil)
@@ -53,18 +54,19 @@ public class CoreStorageManager: CoreStorageProvider {
     }
     
     public func fetch<ManagedObject: NSManagedObject>(entity: ManagedObject.Type,
-                                                      with predicate: NSPredicate?,
+                                                      with predicate: NSPredicate? = nil,
                                                       onCompletion: @escaping ([NSManagedObject]?, Error?) -> Void) {
         
         do {
             let safePersistentContainer = try self.getPersistentContainer()
+            let safeManagedContext = try self.getManagedObjectContext()
             
-            safePersistentContainer.performBackgroundTask { context in
+            safePersistentContainer.performBackgroundTask { _ in
                 do {
                     let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: String(describing: entity))
                     fetchRequest.predicate = predicate
                     
-                    if let result = try context.fetch(fetchRequest) as? [NSManagedObject] {
+                    if let result = try safeManagedContext.fetch(fetchRequest) as? [NSManagedObject] {
                         onCompletion(result, nil)
                         
                         return
@@ -86,9 +88,10 @@ public class CoreStorageManager: CoreStorageProvider {
                        onCompletion: @escaping (Error?) -> Void) {
         do {
             let safePersistentContainer = try self.getPersistentContainer()
+            let safeManagedContext = try self.getManagedObjectContext()
             
-            safePersistentContainer.performBackgroundTask { context in
-                context.delete(managedObject)
+            safePersistentContainer.performBackgroundTask { _ in
+                safeManagedContext.delete(managedObject)
                 
                 self.save { error in
                     onCompletion(error)
@@ -104,7 +107,7 @@ public class CoreStorageManager: CoreStorageProvider {
 // MARK: - Helpers
 extension CoreStorageManager {
     
-    private func getPersistentContainer() throws -> NSPersistentContainer {
+    func getPersistentContainer() throws -> NSPersistentContainer {
         if let safePersistentContainer = self.persistentContainer {
             return safePersistentContainer
         }
@@ -112,24 +115,35 @@ extension CoreStorageManager {
         throw CoreStorageProviderError.persistentContainerNil
     }
     
+    func getManagedObjectContext() throws -> NSManagedObjectContext {
+        do {
+            return try self.getPersistentContainer().viewContext
+        } catch {
+            throw error
+        }
+    }
+    
     private func setupPersistentContainer(onCompletion: @escaping (Error?) -> Void) {
         
         if let dataModelURL = self.coreDataModelBundle.url(forResource: self.coreDataModelName, withExtension: "momd"),
            let managedObjectModel =  NSManagedObjectModel(contentsOf: dataModelURL) {
             
-            var storeDescription = NSPersistentStoreDescription()
-            
             let container = NSPersistentContainer(name: self.coreDataModelName, managedObjectModel: managedObjectModel)
+            
+            // Configure in-memory storage
+            if self.shouldStoreInMemoryOnly {
+                let storeDescription = NSPersistentStoreDescription()
+                storeDescription.url = URL(fileURLWithPath: "/dev/null")
+                storeDescription.type = NSInMemoryStoreType
+                container.persistentStoreDescriptions = [storeDescription]
+            }
+            
+            // Load store
             container.loadPersistentStores { des, error in
                 onCompletion(error)
-                storeDescription = des
             }
             
-            if self.shouldStoreInMemoryOnly {
-                storeDescription.type = NSInMemoryStoreType
-                self.persistentContainer?.persistentStoreDescriptions = [storeDescription]
-            }
-            
+            // local ref
             self.persistentContainer = container
         } else {
             onCompletion(CoreStorageProviderError.couldNotFindCoreDataModel(withName: self.coreDataModelName,

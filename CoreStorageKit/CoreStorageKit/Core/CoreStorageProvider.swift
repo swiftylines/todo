@@ -21,6 +21,10 @@ protocol CoreStorageProvider {
          shouldStoreInMemoryOnly: Bool,
          onCompletion: @escaping (Error?) -> Void)
     
+    // MARK: - Getters
+    func getPersistentContainer() throws -> NSPersistentContainer
+    func getManagedObjectContext() throws -> NSManagedObjectContext
+    
     // MARK: - Features
     
     /// Saves context of current managed object
