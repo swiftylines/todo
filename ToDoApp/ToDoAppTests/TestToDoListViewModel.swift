@@ -16,8 +16,8 @@ class TestToDoListViewModel: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        self.sut = ToDoListViewModel()
-        self.toDoListHelper = ToDoListHelper.shared
+        self.toDoListHelper = ToDoListHelper(storageHelper: MockToDoListStorageHelper())
+        self.sut = ToDoListViewModel(todoHelper: self.toDoListHelper!)
     }
     
     override func tearDown() {
@@ -53,7 +53,7 @@ extension TestToDoListViewModel {
         
         // Operate
         do {
-            _newToDoItem = try ToDoListHelper.shared.addNewToDo(with: "New todo item")
+            _newToDoItem = try self.toDoListHelper.addNewToDo(with: "New todo item")
         } catch {
             _error = error
         }
@@ -73,7 +73,7 @@ extension TestToDoListViewModel {
         
         // Operate
         do {
-            _newToDoItem = try ToDoListHelper.shared.addNewToDo(with: "")
+            _newToDoItem =  try self.toDoListHelper.addNewToDo(with: "")
         } catch {
             _error = error
         }

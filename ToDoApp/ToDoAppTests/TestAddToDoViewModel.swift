@@ -15,7 +15,8 @@ class TestAddToDoViewModel: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        self.sut = AddToDoViewModel()
+        let toDoListHelper = ToDoListHelper(storageHelper: MockToDoListStorageHelper())
+        self.sut = AddToDoViewModel(todoHelper: toDoListHelper)
     }
     
     override func tearDown() {

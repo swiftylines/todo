@@ -9,11 +9,12 @@ import Foundation
 
 class ToDoListHelper: ToDoListDataProvider {
     
-    // MARK: - Shared
-    public static let shared = ToDoListHelper()
-    private init() { }
-    
     private(set) var todos = [ToDoItem]()
+    private let storageHelper: ToDoListStorageHelper
+    
+    init(storageHelper: ToDoListStorageHelper) {
+        self.storageHelper = storageHelper
+    }
     
 }
 

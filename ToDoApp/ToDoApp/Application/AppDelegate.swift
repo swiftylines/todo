@@ -21,13 +21,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
 }
-
-private extension AppDelegate {
-    
-    func setupRootViewController() {
-        self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.window?.rootViewController = UINavigationController(rootViewController: ToDoListView(viewModel: ToDoListViewModel()))
-        self.window?.makeKeyAndVisible()
-    }
-    
-}

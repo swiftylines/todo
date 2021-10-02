@@ -9,7 +9,11 @@ import CoreUIKit
 
 class AddToDoViewModel: BaseViewModel {
     
-    private var todoHelper = ToDoListHelper.shared
+    private let todoHelper: ToDoListHelper
+    
+    init(todoHelper: ToDoListHelper) {
+        self.todoHelper = todoHelper
+    }
     
     func initializeData() {
         
