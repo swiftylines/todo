@@ -88,7 +88,7 @@ extension ToDoListStorageProvider {
     func deleteTodo(with id: UUID,
                     onResponse: @escaping (Error?) -> Void) {
         
-        let fetchWithIdPredicate = NSPredicate(format: "id IN %@", id.description)
+        let fetchWithIdPredicate = NSPredicate(format: "%K == %@", "id", id as CVarArg)
         self.storageManager
             .fetch(entity: ToDoItemEntity.self,
                    with: fetchWithIdPredicate) { fetchedManagedObject, fetchErr in

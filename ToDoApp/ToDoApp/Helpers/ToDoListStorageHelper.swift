@@ -6,15 +6,19 @@
 //
 
 import Foundation
-
+import CoreStorageKit
 
 /// Provides todo storage features, such as creating and deleting a todo item
 ///
 /// - Important
 ///     - It's not recommended to use  `ToDoListStorageHelper` directly, because it will directly perform the operation with the provided data.
 ///
-class ToDoListStorageHelper {
+class ToDoListStorageHelper: ToDoListStorageProvider {
     
+    let storageManager: CoreStorageManager
     
+    required init(storageManager: CoreStorageManager) {
+        self.storageManager = storageManager
+    }
     
 }

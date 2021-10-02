@@ -16,3 +16,11 @@ enum ToDoError: Error {
     /// Trying to cast an object into another object
     case convertionFailed(message: String)
 }
+
+extension ToDoError: Equatable {
+    
+    static func == (lhs: ToDoError, rhs: ToDoError) -> Bool {
+        return lhs.localizedDescription == rhs.localizedDescription
+    }
+    
+}
