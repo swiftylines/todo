@@ -37,6 +37,10 @@ class ToDoListView: UIViewController, BaseInitializableView, ToDoListViewProvide
     func setupViews() {
         self.setupTodoTableView()
         self.setupAddTodoButtonView()
+        
+        self.viewModel?.onToDoListUpdate = { [weak self] in
+            self?.todoTableView.reloadData()
+        }
     }
     
     func setupData() {
@@ -71,8 +75,8 @@ extension ToDoListView {
     
     @objc func didTapAddToDoButtonView() {
         let addToDoView = AddToDoView(viewModel: AddToDoViewModel(todoStorageHelper: self.viewModel!.todoStorageHelper))
-        addToDoView.onNewToDoSave = { [weak self] todoStr in
-            self?.todoTableView.reloadData()
+        addToDoView.onNewToDoSave = { [weak self] newToDoItem in
+            self?.viewModel?.didAddNew(toDoItem: newToDoItem)
         }
         
         self.navigationController?
