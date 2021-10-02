@@ -70,7 +70,7 @@ class ToDoListView: UIViewController, BaseInitializableView, ToDoListViewProvide
 extension ToDoListView {
     
     @objc func didTapAddToDoButtonView() {
-        let addToDoView = AddToDoView(viewModel: AddToDoViewModel(todoHelper: self.viewModel!.todoHelper))
+        let addToDoView = AddToDoView(viewModel: AddToDoViewModel(todoStorageHelper: self.viewModel!.todoStorageHelper))
         addToDoView.onNewToDoSave = { [weak self] todoStr in
             self?.todoTableView.reloadData()
         }

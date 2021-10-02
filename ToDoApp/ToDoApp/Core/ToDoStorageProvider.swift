@@ -1,5 +1,5 @@
 //
-//  ToDoListStorageProvider.swift
+//  ToDoStorageProvider.swift
 //  ToDoApp
 //
 //  Created by Manish on 02/10/21.
@@ -9,7 +9,7 @@ import Foundation
 import CoreStorageKit
 
 /// Provides local storage features for todo items
-protocol ToDoListStorageProvider {
+protocol ToDoStorageProvider {
     
     var storageManager: CoreStorageManager { get }
     
@@ -20,8 +20,8 @@ protocol ToDoListStorageProvider {
     /// - Parameters:
     ///     - with: todo item that needs to be created/saved locally
     ///     - onResponse: closure executes after todo is saved or if there was any error while saving it.
-    func createTodo(with todoItem: ToDoItem,
-                    onResponse: @escaping (Error?) -> Void)
+    func createTodo(with description: String,
+                    onResponse: @escaping (ToDoItem?, Error?) -> Void)
     
     /// Fetches all the todo items stored locally
     ///
@@ -46,12 +46,24 @@ protocol ToDoListStorageProvider {
     
 }
 
-extension ToDoListStorageProvider {
+extension ToDoStorageProvider {
     
-    func createTodo(with todoItem: ToDoItem,
-                    onResponse: @escaping (Error?) -> Void) {
+    func createTodo(with description: String,
+                    onResponse: @escaping (ToDoItem?, Error?) -> Void) {
+        let safeDescription = description.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        // Check for description
+        guard !safeDescription.isEmpty else {
+            onResponse(nil, ToDoError.emptyDescription)
+            return
+        }
+        
         do {
             let managedObjectContext = try self.storageManager.getManagedObjectContext()
+            
+            let todoItem = ToDoItem(id: UUID(),
+                                    createdAt: Date(),
+                                    description: safeDescription)
             
             let managedToDoObject = ToDoItemEntity(context: managedObjectContext)
             managedToDoObject.id = todoItem.id
@@ -59,11 +71,15 @@ extension ToDoListStorageProvider {
             managedToDoObject.descText = todoItem.description
             
             self.storageManager.save { err in
-                onResponse(err)
+                if let safeError = err {
+                    onResponse(nil, safeError)
+                } else {
+                    onResponse(todoItem, nil)
+                }
             }
             
         } catch {
-            onResponse(error)
+            onResponse(nil, error)
         }
     }
     

@@ -8,11 +8,11 @@
 @testable import CoreStorageKit
 @testable import ToDoApp
 
-class MockToDoListStorageHelper: ToDoListStorageHelper {
+class MockToDoListStorageHelper: ToDoStorageHelper {
     
     init() {
         let testDataModelName = "ToDoStorage"
-        let bundle = Bundle(for: ToDoListStorageHelper.self)
+        let bundle = Bundle(for: ToDoStorageHelper.self)
         
         let inMemoryStorageManager = CoreStorageManager(with: testDataModelName,
                                                         coreDataModelBundle: bundle,

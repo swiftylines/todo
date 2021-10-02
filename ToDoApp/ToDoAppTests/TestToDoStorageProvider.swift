@@ -1,5 +1,5 @@
 //
-//  TestToDoListStorageProvider.swift
+//  TestToDoStorageProvider.swift
 //  ToDoAppTests
 //
 //  Created by Manish on 03/10/21.
@@ -8,9 +8,9 @@
 @testable import ToDoApp
 import XCTest
 
-class TestToDoListStorageProvider: XCTestCase {
+class TestToDoStorageProvider: XCTestCase {
     
-    private(set) var sut: ToDoListStorageProvider!
+    private(set) var sut: ToDoStorageProvider!
     
     override func setUp() {
         super.setUp()
@@ -27,44 +27,50 @@ class TestToDoListStorageProvider: XCTestCase {
 }
 
 // MARK: - Test features
-extension TestToDoListStorageProvider {
+extension TestToDoStorageProvider {
     
     func test_createToDo_success() {
         
         let saveExp = expectation(description: "test_createToDo_success")
-        let newToDoItem = ToDoItem(id: UUID(),
-                                   createdAt: Date(),
-                                   description: "Test ToDo Item.")
+        
+        let createTodoDescription = "Test ToDo Item."
         
         var _saveError: Error?
+        var _createdToDo: ToDoItem?
         
         self.sut
-            .createTodo(with: newToDoItem) { saveErr in
+            .createTodo(with: createTodoDescription) { createdToDo, saveErr in
                 _saveError = saveErr
+                _createdToDo = createdToDo
+                
                 saveExp.fulfill()
             }
         
         wait(for: [saveExp], timeout: 1)
         
         XCTAssertNil(_saveError)
+        XCTAssertNotNil(_createdToDo)
+        XCTAssertEqual(_createdToDo?.description, createTodoDescription)
     }
     
     func test_fetchAllToDo_success() {
         
         let saveExp = expectation(description: "test_fetchAAllToDo_success_create")
         let fetchExp = expectation(description: "test_fetchAAllToDo_success_fetch")
-        let newToDoItem = ToDoItem(id: UUID(),
-                                   createdAt: Date(),
-                                   description: "Test ToDo Item.")
+        
+        let newToDoItemDesc = "Test ToDo Item."
         
         var _saveError: Error?
+        var _createdToDoItem: ToDoItem?
+        
         var _fetchedError: Error?
         var _fetchedToDos: [ToDoItem]?
         
         // create a new todo
         self.sut
-            .createTodo(with: newToDoItem) { saveErr in
+            .createTodo(with: newToDoItemDesc) { createdToDoItem, saveErr in
                 _saveError = saveErr
+                _createdToDoItem = createdToDoItem
                 
                 saveExp.fulfill()
                 
@@ -83,10 +89,10 @@ extension TestToDoListStorageProvider {
         XCTAssertNil(_saveError)
         XCTAssertNil(_fetchedError)
         XCTAssertNotNil(_fetchedToDos)
+        XCTAssertNotNil(_createdToDoItem)
+        XCTAssertEqual(_createdToDoItem?.description, newToDoItemDesc)
         XCTAssertEqual(_fetchedToDos?.count, 1)
-        XCTAssertEqual(_fetchedToDos?.first?.id, newToDoItem.id)
-        XCTAssertEqual(_fetchedToDos?.first?.createdAt, newToDoItem.createdAt)
-        XCTAssertEqual(_fetchedToDos?.first?.description, newToDoItem.description)
+        XCTAssertEqual(_fetchedToDos?.first?.description, newToDoItemDesc)
     }
     
     func test_DeleteToDo_success() {
@@ -94,9 +100,8 @@ extension TestToDoListStorageProvider {
         let saveExp = expectation(description: "test_DeleteToDo_success_create")
         let deleteExp = expectation(description: "test_DeleteToDo_success_delete")
         let fetchExp = expectation(description: "test_fetchAAllToDo_success_fetch")
-        let newToDoItem = ToDoItem(id: UUID(),
-                                   createdAt: Date(),
-                                   description: "Test ToDo Item.")
+        
+        let newToDoItemDescription = "Test ToDo Item."
         
         var _saveError: Error?
         var _deleteError: Error?
@@ -105,14 +110,14 @@ extension TestToDoListStorageProvider {
         
         // create a new todo
         self.sut
-            .createTodo(with: newToDoItem) { saveErr in
+            .createTodo(with: newToDoItemDescription) { createdToDo, saveErr in
                 _saveError = saveErr
                 
                 saveExp.fulfill()
                 
                 // delete newly created todo
                 self.sut
-                    .deleteTodo(with: newToDoItem.id) { deleteErr in
+                    .deleteTodo(with: createdToDo!.id) { deleteErr in
                         _deleteError = deleteErr
                         deleteExp.fulfill()
                         

@@ -10,15 +10,12 @@ import CoreUIKit
 class ToDoListViewModel: BaseViewModel {
     
     // MARK: - Properties
-    var todos: [ToDoItem] {
-        return self.todoHelper.todos
-    }
-    
-    let todoHelper: ToDoListHelper
+    private(set) var todos = [ToDoItem]()
+    let todoStorageHelper: ToDoStorageHelper
     
     // MARK: - Init
-    init(todoHelper: ToDoListHelper) {
-        self.todoHelper = todoHelper
+    init(todoStorageHelper: ToDoStorageHelper) {
+        self.todoStorageHelper = todoStorageHelper
     }
     
     func initializeData() {

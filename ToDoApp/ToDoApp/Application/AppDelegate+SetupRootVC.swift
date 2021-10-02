@@ -13,21 +13,21 @@ extension AppDelegate {
     func setupRootViewController() {
         self.window = UIWindow(frame: UIScreen.main.bounds)
         
-        let todoListVM = ToDoListViewModel(todoHelper: self.getToDoHelperInitialInstence())
+        let todoListVM = ToDoListViewModel(todoStorageHelper: self.getToDoStorageHelperInstence())
         let toDoListVC = ToDoListView(viewModel: todoListVM)
         self.window?.rootViewController = UINavigationController(rootViewController: toDoListVC)
         self.window?.makeKeyAndVisible()
     }
 
-    private func getToDoHelperInitialInstence() -> ToDoListHelper {
+    private func getToDoStorageHelperInstence() -> ToDoStorageHelper {
         let coreStorageManager = CoreStorageManager(with: "ToDoStorage",
                                                     coreDataModelBundle: Bundle(for: AppDelegate.self)) { err in
             if err != nil {
                 assertionFailure(err.debugDescription)
             }
         }
-        let todoListHelper = ToDoListStorageHelper(storageManager: coreStorageManager)
-        return ToDoListHelper(storageHelper: todoListHelper)
+        
+        return ToDoStorageHelper(storageManager: coreStorageManager)
     }
     
 }

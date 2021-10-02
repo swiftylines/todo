@@ -1,5 +1,5 @@
 //
-//  ToDoListStorageHelper.swift
+//  ToDoStorageHelper.swift
 //  ToDoApp
 //
 //  Created by Manish on 02/10/21.
@@ -13,7 +13,7 @@ import CoreStorageKit
 /// - Important
 ///     - It's not recommended to use  `ToDoListStorageHelper` directly, because it will directly perform the operation with the provided data.
 ///
-class ToDoListStorageHelper: ToDoListStorageProvider {
+class ToDoStorageHelper: ToDoStorageProvider {
     
     let storageManager: CoreStorageManager
     

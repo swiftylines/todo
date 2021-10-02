@@ -9,10 +9,12 @@ import CoreUIKit
 
 class AddToDoViewModel: BaseViewModel {
     
-    private let todoHelper: ToDoListHelper
+    // MARK: - Properties
+    let todoStorageHelper: ToDoStorageHelper
     
-    init(todoHelper: ToDoListHelper) {
-        self.todoHelper = todoHelper
+    // MARK: - Init
+    init(todoStorageHelper: ToDoStorageHelper) {
+        self.todoStorageHelper = todoStorageHelper
     }
     
     func initializeData() {
@@ -21,11 +23,12 @@ class AddToDoViewModel: BaseViewModel {
     
     func tryCreatingNewToDo(with todoStr: String,
                             onResponse: @escaping (ToDoItem?, Error?) -> Void) {
-        do {
-            let addedToDoItem = try self.todoHelper.addNewToDo(with: todoStr)
-            onResponse(addedToDoItem, nil)
-        } catch {
-            onResponse(nil, error)
+        self.todoStorageHelper.createTodo(with: todoStr) { createdTodo, err in
+            if let safeErr = err {
+                onResponse(nil, safeErr)
+            } else {
+                onResponse(createdTodo, nil)
+            }
         }
         
     }
