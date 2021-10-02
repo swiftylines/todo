@@ -49,6 +49,9 @@ class AddToDoView: UIViewController, BaseInitializableView, AddToDoViewProvider 
     }
     
     func setupTextView() {
+        self.textView.font = ToDoFont.bold.with(size: 25)
+        self.textView.textColor = ToDoColor.primaryText.color
+        
         self.textView
             .add(to: self.view)
             .allAnchorsSame(on: self.view)
