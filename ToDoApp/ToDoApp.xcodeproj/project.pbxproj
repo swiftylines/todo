@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		13067DB62708BD320016A09B /* ToDoListStorageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13067DB52708BD320016A09B /* ToDoListStorageHelper.swift */; };
+		13067DB82708BE880016A09B /* ToDoListStorageProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13067DB72708BE880016A09B /* ToDoListStorageProvider.swift */; };
 		1307312E26F8E12F004E419B /* CoreStorageKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1307312D26F8E12F004E419B /* CoreStorageKit.framework */; };
 		1307312F26F8E12F004E419B /* CoreStorageKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1307312D26F8E12F004E419B /* CoreStorageKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1337936826F6135400C19470 /* ToDoListHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1337936726F6135400C19470 /* ToDoListHelper.swift */; };
@@ -66,6 +68,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		13067DB52708BD320016A09B /* ToDoListStorageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListStorageHelper.swift; sourceTree = "<group>"; };
+		13067DB72708BE880016A09B /* ToDoListStorageProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListStorageProvider.swift; sourceTree = "<group>"; };
 		1307312D26F8E12F004E419B /* CoreStorageKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CoreStorageKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1337936726F6135400C19470 /* ToDoListHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListHelper.swift; sourceTree = "<group>"; };
 		1337936926F619D300C19470 /* AddToDoViewProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToDoViewProvider.swift; sourceTree = "<group>"; };
@@ -127,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				1337936726F6135400C19470 /* ToDoListHelper.swift */,
+				13067DB52708BD320016A09B /* ToDoListStorageHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -245,6 +250,7 @@
 				139E093326E1439000A72A24 /* ToDoListDataProvider.swift */,
 				139E093526E143B400A72A24 /* ToDoListViewProvider.swift */,
 				1337936926F619D300C19470 /* AddToDoViewProvider.swift */,
+				13067DB72708BE880016A09B /* ToDoListStorageProvider.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -413,12 +419,14 @@
 				139E093426E1439000A72A24 /* ToDoListDataProvider.swift in Sources */,
 				139E092426E13CAD00A72A24 /* AddToDoView.swift in Sources */,
 				139E092626E13CBC00A72A24 /* AddToDoViewModel.swift in Sources */,
+				13067DB82708BE880016A09B /* ToDoListStorageProvider.swift in Sources */,
 				1337936A26F619D300C19470 /* AddToDoViewProvider.swift in Sources */,
 				13FC36D526E2A85800D5D517 /* ToDoItemCell.swift in Sources */,
 				139E094326E1498100A72A24 /* ToDoError.swift in Sources */,
 				13FC36CE26E2A33D00D5D517 /* ToDoListView+UITableViewDataSource.swift in Sources */,
 				139E093A26E1441C00A72A24 /* ToDoItem.swift in Sources */,
 				13FC36D026E2A35100D5D517 /* ToDoListView+UITableViewDelegate.swift in Sources */,
+				13067DB62708BD320016A09B /* ToDoListStorageHelper.swift in Sources */,
 				13FC36D726E2AB3700D5D517 /* ToDoItemCellViewModel.swift in Sources */,
 				139E08BF26E13AAE00A72A24 /* AppDelegate.swift in Sources */,
 			);
