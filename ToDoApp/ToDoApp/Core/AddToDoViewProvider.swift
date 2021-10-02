@@ -11,7 +11,7 @@ protocol AddToDoViewProvider {
     
     var viewModel: AddToDoViewModel? { get }
     
-    var textView: UITextView { get }
+    var textView: PlaceholderTextView { get }
     var saveToDoButtonView: UIBarButtonItem { get }
     
     var onNewToDoSave: ((ToDoItem) -> Void)? { get set }

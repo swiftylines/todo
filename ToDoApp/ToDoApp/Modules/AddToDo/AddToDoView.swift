@@ -14,8 +14,11 @@ class AddToDoView: UIViewController, BaseInitializableView, AddToDoViewProvider 
     private(set) var viewModel: AddToDoViewModel?
     
     // MARK: - Views
-    private(set) var textView = UITextView()
-    private(set) var saveToDoButtonView = UIBarButtonItem()
+    let textView = PlaceholderTextView(placeholderText: "Type something...",
+                                       textFont: ToDoFont.bold.with(size: 23),
+                                       textColor: ToDoColor.primaryText.color)
+    
+    let saveToDoButtonView = UIBarButtonItem()
     
     // MARK: - Callbacks
     var onNewToDoSave: ((ToDoItem) -> Void)?
@@ -51,14 +54,13 @@ class AddToDoView: UIViewController, BaseInitializableView, AddToDoViewProvider 
     }
     
     func setupTextView() {
-        self.textView.font = ToDoFont.bold.with(size: 25)
-        self.textView.textColor = ToDoColor.primaryText.color
-        
         self.textView
             .add(to: self.view)
             .allAnchorsSame(on: self.view)
         
-        self.textView.delegate = self
+        self.textView.onTextChange = { _ in
+            self.checkAndSetupSaveToDoButtonVIew()
+        }
     }
     
     func checkAndSetupSaveToDoButtonVIew() {
@@ -83,7 +85,7 @@ class AddToDoView: UIViewController, BaseInitializableView, AddToDoViewProvider 
     
 }
 
-extension AddToDoView: UITextViewDelegate {
+extension AddToDoView {
     
     func textViewDidChange(_ textView: UITextView) {
         self.checkAndSetupSaveToDoButtonVIew()

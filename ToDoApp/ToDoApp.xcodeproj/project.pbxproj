@@ -24,6 +24,7 @@
 		134DBDD6270909BB006F7C60 /* ToDoColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134DBDD5270909BB006F7C60 /* ToDoColor.swift */; };
 		134DBDD927090EED006F7C60 /* ToDoLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134DBDD827090EED006F7C60 /* ToDoLabel.swift */; };
 		134DBDDB2709172D006F7C60 /* ToDoDateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134DBDDA2709172D006F7C60 /* ToDoDateFormat.swift */; };
+		134DBDDE27091CED006F7C60 /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134DBDDD27091CED006F7C60 /* PlaceholderTextView.swift */; };
 		139E08BF26E13AAE00A72A24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139E08BE26E13AAE00A72A24 /* AppDelegate.swift */; };
 		139E08CE26E13AAE00A72A24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 139E08CC26E13AAE00A72A24 /* LaunchScreen.storyboard */; };
 		139E08E426E13AAE00A72A24 /* ToDoAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139E08E326E13AAE00A72A24 /* ToDoAppUITests.swift */; };
@@ -96,6 +97,7 @@
 		134DBDD5270909BB006F7C60 /* ToDoColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoColor.swift; sourceTree = "<group>"; };
 		134DBDD827090EED006F7C60 /* ToDoLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoLabel.swift; sourceTree = "<group>"; };
 		134DBDDA2709172D006F7C60 /* ToDoDateFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoDateFormat.swift; sourceTree = "<group>"; };
+		134DBDDD27091CED006F7C60 /* PlaceholderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
 		139E08BB26E13AAE00A72A24 /* ToDoApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDoApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		139E08BE26E13AAE00A72A24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		139E08CD26E13AAE00A72A24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 		1337936626F6131E00C19470 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				134DBDDC27091CCD006F7C60 /* Views */,
 				134DBDD32709071E006F7C60 /* ToDoFont.swift */,
 				134DBDD5270909BB006F7C60 /* ToDoColor.swift */,
 				134DBDD827090EED006F7C60 /* ToDoLabel.swift */,
@@ -183,6 +186,14 @@
 				134DBDCD27090700006F7C60 /* OFL.txt */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		134DBDDC27091CCD006F7C60 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				134DBDDD27091CED006F7C60 /* PlaceholderTextView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		139E08B226E13AAE00A72A24 = {
@@ -500,6 +511,7 @@
 				13FC36D526E2A85800D5D517 /* ToDoItemCell.swift in Sources */,
 				139E094326E1498100A72A24 /* ToDoError.swift in Sources */,
 				13FC36CE26E2A33D00D5D517 /* ToDoListView+UITableViewDataSource.swift in Sources */,
+				134DBDDE27091CED006F7C60 /* PlaceholderTextView.swift in Sources */,
 				139E093A26E1441C00A72A24 /* ToDoItem.swift in Sources */,
 				134DBDDB2709172D006F7C60 /* ToDoDateFormat.swift in Sources */,
 				13FC36D026E2A35100D5D517 /* ToDoListView+UITableViewDelegate.swift in Sources */,
