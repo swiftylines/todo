@@ -1,0 +1,25 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "CoreStorageKit",
+        "repositoryURL": "https://github.com/0vertex/CoreStorageKit",
+        "state": {
+          "branch": "main",
+          "revision": "3224e6ab7bd597b4227fc3a558a141a1b75c3e22",
+          "version": null
+        }
+      },
+      {
+        "package": "CoreUIKit",
+        "repositoryURL": "https://github.com/0vertex/CoreUIKit",
+        "state": {
+          "branch": null,
+          "revision": "62dd287ddc139a39bc3b48c45741866a55972970",
+          "version": "0.3.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
