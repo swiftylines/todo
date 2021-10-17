@@ -51,4 +51,19 @@ class ToDoListViewModel: BaseViewModel {
             }
     }
     
+    func deleteToDo(at index: Int) {
+        if index >= self.todos.count { assertionFailure(); return }
+        
+        let todoItemUUID = self.todos[index].id
+        self.todoStorageHelper
+            .deleteTodo(with: todoItemUUID) { err in
+                if let _ = err {
+                    assertionFailure()
+                    return
+                }
+                
+                // remove local ref
+                self.todos.remove(at: index)
+            }
+    }
 }

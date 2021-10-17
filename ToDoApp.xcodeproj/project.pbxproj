@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,8 +12,6 @@
 		13067DBC2708C38C0016A09B /* ToDoStorage.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 13067DBA2708C38C0016A09B /* ToDoStorage.xcdatamodeld */; };
 		13067DC12708C7300016A09B /* ToDoItemEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13067DBD2708C46F0016A09B /* ToDoItemEntity+CoreDataClass.swift */; };
 		13067DC22708C7300016A09B /* ToDoItemEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13067DBE2708C46F0016A09B /* ToDoItemEntity+CoreDataProperties.swift */; };
-		1307312E26F8E12F004E419B /* CoreStorageKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1307312D26F8E12F004E419B /* CoreStorageKit.framework */; };
-		1307312F26F8E12F004E419B /* CoreStorageKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1307312D26F8E12F004E419B /* CoreStorageKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		1337936A26F619D300C19470 /* AddToDoViewProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1337936926F619D300C19470 /* AddToDoViewProvider.swift */; };
 		134DBDCE27090700006F7C60 /* NotoSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 134DBDC9270906FF006F7C60 /* NotoSans-Bold.ttf */; };
 		134DBDCF27090700006F7C60 /* NotoSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 134DBDCA270906FF006F7C60 /* NotoSans-BoldItalic.ttf */; };
@@ -25,11 +23,11 @@
 		134DBDD927090EED006F7C60 /* ToDoLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134DBDD827090EED006F7C60 /* ToDoLabel.swift */; };
 		134DBDDB2709172D006F7C60 /* ToDoDateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134DBDDA2709172D006F7C60 /* ToDoDateFormat.swift */; };
 		134DBDDE27091CED006F7C60 /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134DBDDD27091CED006F7C60 /* PlaceholderTextView.swift */; };
+		1368BF4D271C34F300EA7595 /* CoreUIKit in Frameworks */ = {isa = PBXBuildFile; productRef = 1368BF4C271C34F300EA7595 /* CoreUIKit */; };
+		136B5442271B3E2B002297C3 /* CoreStorageKit in Frameworks */ = {isa = PBXBuildFile; productRef = 136B5441271B3E2B002297C3 /* CoreStorageKit */; };
 		139E08BF26E13AAE00A72A24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139E08BE26E13AAE00A72A24 /* AppDelegate.swift */; };
 		139E08CE26E13AAE00A72A24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 139E08CC26E13AAE00A72A24 /* LaunchScreen.storyboard */; };
 		139E08E426E13AAE00A72A24 /* ToDoAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139E08E326E13AAE00A72A24 /* ToDoAppUITests.swift */; };
-		139E091926E13BD400A72A24 /* CoreUIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 139E091826E13BD400A72A24 /* CoreUIKit.framework */; };
-		139E091A26E13BD400A72A24 /* CoreUIKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 139E091826E13BD400A72A24 /* CoreUIKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		139E092026E13C8C00A72A24 /* ToDoListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139E091F26E13C8C00A72A24 /* ToDoListView.swift */; };
 		139E092226E13C9A00A72A24 /* ToDoListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139E092126E13C9A00A72A24 /* ToDoListViewModel.swift */; };
 		139E092426E13CAD00A72A24 /* AddToDoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 139E092326E13CAD00A72A24 /* AddToDoView.swift */; };
@@ -64,21 +62,6 @@
 			remoteInfo = ToDoApp;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		139E091B26E13BD400A72A24 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				1307312F26F8E12F004E419B /* CoreStorageKit.framework in Embed Frameworks */,
-				139E091A26E13BD400A72A24 /* CoreUIKit.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		13067DB52708BD320016A09B /* ToDoStorageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoStorageHelper.swift; sourceTree = "<group>"; };
@@ -131,8 +114,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1307312E26F8E12F004E419B /* CoreStorageKit.framework in Frameworks */,
-				139E091926E13BD400A72A24 /* CoreUIKit.framework in Frameworks */,
+				1368BF4D271C34F300EA7595 /* CoreUIKit in Frameworks */,
+				136B5442271B3E2B002297C3 /* CoreStorageKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,13 +355,16 @@
 				139E08B726E13AAE00A72A24 /* Sources */,
 				139E08B826E13AAE00A72A24 /* Frameworks */,
 				139E08B926E13AAE00A72A24 /* Resources */,
-				139E091B26E13BD400A72A24 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = ToDoApp;
+			packageProductDependencies = (
+				136B5441271B3E2B002297C3 /* CoreStorageKit */,
+				1368BF4C271C34F300EA7595 /* CoreUIKit */,
+			);
 			productName = ToDoApp;
 			productReference = 139E08BB26E13AAE00A72A24 /* ToDoApp.app */;
 			productType = "com.apple.product-type.application";
@@ -450,6 +436,10 @@
 				Base,
 			);
 			mainGroup = 139E08B226E13AAE00A72A24;
+			packageReferences = (
+				136B5440271B3E2B002297C3 /* XCRemoteSwiftPackageReference "CoreStorageKit" */,
+				1368BF4B271C34F300EA7595 /* XCRemoteSwiftPackageReference "CoreUIKit" */,
+			);
 			productRefGroup = 139E08BC26E13AAE00A72A24 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -841,6 +831,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1368BF4B271C34F300EA7595 /* XCRemoteSwiftPackageReference "CoreUIKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/0vertex/CoreUIKit";
+			requirement = {
+				kind = exactVersion;
+				version = 0.3.0;
+			};
+		};
+		136B5440271B3E2B002297C3 /* XCRemoteSwiftPackageReference "CoreStorageKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/0vertex/CoreStorageKit";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1368BF4C271C34F300EA7595 /* CoreUIKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1368BF4B271C34F300EA7595 /* XCRemoteSwiftPackageReference "CoreUIKit" */;
+			productName = CoreUIKit;
+		};
+		136B5441271B3E2B002297C3 /* CoreStorageKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 136B5440271B3E2B002297C3 /* XCRemoteSwiftPackageReference "CoreStorageKit" */;
+			productName = CoreStorageKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		13067DBA2708C38C0016A09B /* ToDoStorage.xcdatamodeld */ = {
