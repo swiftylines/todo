@@ -12,7 +12,7 @@ class ToDoListViewModel: BaseViewModel {
     // MARK: - Properties
     private(set) var todos = [ToDoItem]() {
         didSet {
-            onToDoListUpdate?()
+            self.onToDoListUpdate?()
         }
     }
     
@@ -38,32 +38,40 @@ class ToDoListViewModel: BaseViewModel {
         }
     }
     
-    func fetchAllToDos() {
+    func fetchAllToDos(onResponse: (() -> Void)? = nil) {
         self.todoStorageHelper
             .fetchAllToDoItems { todos, err in
                 if err != nil {
+                    onResponse?()
                     assertionFailure(err.debugDescription)
                     return
                 }
                 
                 // reset todos
                 self.todos = todos
+                onResponse?()
             }
     }
     
-    func deleteToDo(at index: Int) {
-        if index >= self.todos.count { assertionFailure(); return }
+    func deleteToDo(at index: Int,
+                    onResponse: ((Bool) -> Void)? = nil) {
+        if index >= self.todos.count {
+            onResponse?(false)
+            return
+        }
         
         let todoItemUUID = self.todos[index].id
         self.todoStorageHelper
             .deleteTodo(with: todoItemUUID) { err in
                 if let _ = err {
+                    onResponse?(false)
                     assertionFailure()
                     return
                 }
                 
                 // remove local ref
                 self.todos.remove(at: index)
+                onResponse?(true)
             }
     }
 }
