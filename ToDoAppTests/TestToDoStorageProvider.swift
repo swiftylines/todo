@@ -53,6 +53,29 @@ extension TestToDoStorageProvider {
         XCTAssertEqual(_createdToDo?.description, createTodoDescription)
     }
     
+    func test_createToDo_failed() {
+        
+        let saveExp = expectation(description: "test_createToDo_failed")
+        
+        let createTodoDescription = ""
+        
+        var _saveError: Error?
+        var _createdToDo: ToDoItem?
+        
+        self.sut
+            .createTodo(with: createTodoDescription) { createdToDo, saveErr in
+                _saveError = saveErr
+                _createdToDo = createdToDo
+                
+                saveExp.fulfill()
+            }
+        
+        wait(for: [saveExp], timeout: 1)
+        
+        XCTAssertNil(_createdToDo)
+        XCTAssertEqual(_saveError?.localizedDescription, ToDoError.emptyDescription.localizedDescription)
+    }
+    
     func test_fetchAllToDo_success() {
         
         let saveExp = expectation(description: "test_fetchAAllToDo_success_create")
@@ -93,6 +116,29 @@ extension TestToDoStorageProvider {
         XCTAssertEqual(_createdToDoItem?.description, newToDoItemDesc)
         XCTAssertEqual(_fetchedToDos?.count, 1)
         XCTAssertEqual(_fetchedToDos?.first?.description, newToDoItemDesc)
+    }
+    
+    func test_fetchAllToDo_failed() {
+        
+        let fetchExp = expectation(description: "test_fetchAllToDo_failed_fetch")
+
+        var _fetchedError: Error?
+        var _fetchedToDos: [ToDoItem]?
+        
+        // Currently there is no todo in the sut
+        // fetch todo
+        self.sut
+            .fetchAllToDoItems { fetchedToDos, fetchedErr in
+                _fetchedToDos = fetchedToDos
+                _fetchedError = fetchedErr
+                
+                fetchExp.fulfill()
+            }
+        
+        wait(for: [fetchExp], timeout: 1)
+        
+        XCTAssertNil(_fetchedError)
+        XCTAssertEqual(_fetchedToDos?.count, 0)
     }
     
     func test_DeleteToDo_success() {
@@ -138,6 +184,24 @@ extension TestToDoStorageProvider {
         XCTAssertNil(_deleteError)
         XCTAssertNil(_fetchedError)
         XCTAssertEqual(_fetchedToDos?.isEmpty, true)
+    }
+    
+    func test_DeleteToDo_failed() {
+        
+        let deleteExp = expectation(description: "test_DeleteToDo_failed_delete")
+        
+        var _deleteError: Error?
+        
+        // try deleting todo from empty list
+        self.sut
+            .deleteTodo(with: UUID()) { deleteErr in
+                _deleteError = deleteErr
+                deleteExp.fulfill()
+            }
+        
+        wait(for: [deleteExp], timeout: 1)
+        
+        XCTAssertEqual(_deleteError?.localizedDescription, ToDoError.doesNotExist.localizedDescription)
     }
     
 }
